@@ -18,7 +18,13 @@ Instructions:
 - Present the strongest competing answer you can justify.
 - Use ordinary real-world commonsense unless the question explicitly asks about fictional or hypothetical rules.
 - Use the context when it is available.
+- Do not simply repeat your previous answer.
+- In every debate round after the initial position, improve your case by doing at least one of these:
+  1. introduce one new factual premise,
+  2. directly rebut the opponent's strongest previous claim,
+  3. explicitly revise your earlier reasoning if it was weak.
 - If the best answer changes after seeing the transcript, update your answer explicitly.
+- Penalize unsupported rhetoric and focus on whether the opponent's logic actually holds.
 - Keep the rationale concise but substantive.
 - The `answer` field must be exactly `yes` or `no`.
 - Put all explanation in `rationale`, not in `answer`.

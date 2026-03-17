@@ -1,0 +1,12 @@
+{
+  "run_id": "run_20260317T135716Z_47d43d93",
+  "n_items": 10,
+  "accuracy_debate": 0.7,
+  "accuracy_direct": 0.9,
+  "accuracy_sc": 0.9,
+  "mcnemar_debate_vs_direct_p": 0.5,
+  "mcnemar_debate_vs_sc_p": 0.5
+}
+
+Saved run logs to: /Users/brian/Downloads/llm-debate/runs/run_20260317T135716Z_47d43d93.jsonl
+Saved summary to: /Users/brian/Downloads/llm-debate/runs/run_20260317T135716Z_47d43d93.summary.json

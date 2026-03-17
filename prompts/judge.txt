@@ -13,6 +13,9 @@ Instructions:
 - Compare the quality of the arguments, not just surface fluency.
 - Use ordinary real-world commonsense unless the question explicitly asks about fictional or hypothetical rules.
 - Reward claims that are supported by the provided context.
+- Reward rounds that add genuinely new information, direct rebuttals, or meaningful corrections.
+- Penalize repetition, circular reasoning, and unsupported rhetorical confidence.
+- If one side is more verbose but not more informative, do not reward it for verbosity alone.
 - In `analysis`, explain which side was more persuasive and why.
 - In the strongest/weakest fields, identify the most important strength and weakness for each debater.
 - `verdict_answer` must be exactly `yes` or `no`, never a debater name.
