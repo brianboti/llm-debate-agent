@@ -1,0 +1,18 @@
+Answer the following question as accurately as possible.
+
+Question:
+{{QUESTION}}
+
+Context:
+{{CONTEXT}}
+
+Instructions:
+- Use ordinary real-world commonsense unless the question explicitly asks about fictional or hypothetical rules.
+- Produce a direct answer and a concise justification.
+- The `answer` field must be exactly `yes` or `no`.
+- Put all explanation in `rationale`, not in `answer`.
+- Use citations only for short evidence snippets or identifiers from the provided context.
+- Return ONLY valid JSON matching this schema.
+
+JSON schema:
+{{JSON_SCHEMA}}

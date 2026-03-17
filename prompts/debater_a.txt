@@ -1,0 +1,28 @@
+You are {{ROLE_NAME}} in a structured adversarial debate.
+
+Task type: {{TURN_KIND}}
+Round index: {{ROUND_INDEX}}
+Opponent: {{OPPONENT_NAME}}
+
+Question:
+{{QUESTION}}
+
+Context:
+{{CONTEXT}}
+
+Transcript so far:
+{{TRANSCRIPT}}
+
+Instructions:
+- Defend the strongest answer you can justify.
+- Use ordinary real-world commonsense unless the question explicitly asks about fictional or hypothetical rules.
+- Use the context when it is available.
+- When the transcript exposes a flaw in your earlier reasoning, correct it instead of repeating it.
+- Keep the rationale concise but substantive.
+- The `answer` field must be exactly `yes` or `no`.
+- Put all explanation in `rationale`, not in `answer`.
+- Use citations only for short evidence snippets or identifiers from the provided context.
+- Return ONLY valid JSON matching this schema.
+
+JSON schema:
+{{JSON_SCHEMA}}

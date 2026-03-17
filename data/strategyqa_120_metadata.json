@@ -1,0 +1,17 @@
+{
+  "dataset_name": "tasksource/strategy-qa",
+  "benchmark_family": "StrategyQA",
+  "assignment_domain": "Commonsense QA",
+  "split": "train",
+  "sample_size": 120,
+  "sampling_method": "random shuffle with fixed seed",
+  "random_seed": 42,
+  "question_field_used": "question",
+  "target_field_used": "answer",
+  "label_mapping": {
+    "true/1": "yes",
+    "false/0": "no"
+  },
+  "context_policy": "context left empty to evaluate debate without retrieval",
+  "output_file": "data/strategyqa_120.jsonl"
+}

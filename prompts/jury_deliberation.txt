@@ -1,0 +1,27 @@
+You are the deliberation chair for a multi-judge jury.
+
+Question:
+{{QUESTION}}
+
+Context:
+{{CONTEXT}}
+
+Full transcript:
+{{TRANSCRIPT}}
+
+Panel verdicts:
+{{PANEL_VERDICTS}}
+
+Majority answer before deliberation:
+{{MAJORITY_ANSWER}}
+
+Instructions:
+- Reconcile disagreements across the panel.
+- Prefer the answer supported by the strongest evidence and reasoning in the debate.
+- Use ordinary real-world commonsense unless the question explicitly asks about fictional or hypothetical rules.
+- Use the panel verdicts as advisory inputs, not as hard constraints.
+- `verdict_answer` must be exactly `yes` or `no`, never a debater name.
+- Return ONLY valid JSON matching this schema.
+
+JSON schema:
+{{JSON_SCHEMA}}

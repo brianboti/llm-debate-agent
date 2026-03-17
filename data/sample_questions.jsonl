@@ -1,0 +1,3 @@
+{"id":"sample-1","question":"Is the Sun larger than the Earth?","context":"","ground_truth":"yes"}
+{"id":"sample-2","question":"Did the Roman Empire overlap with the Mayan civilization?","context":"The Roman Empire existed from 27 BC to 476 AD. The Mayan civilization spans from roughly 2000 BC into the 1500s AD.","ground_truth":"yes"}
+{"id":"sample-3","question":"Is water's chemical formula CO2?","context":"Water is H2O. Carbon dioxide is CO2.","ground_truth":"no"}
