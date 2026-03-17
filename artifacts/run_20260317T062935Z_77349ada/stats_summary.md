@@ -1,0 +1,5 @@
+- Number of questions: **120**
+- McNemar p-value (Debate vs Direct QA): **0.0923**
+- McNemar p-value (Debate vs Self-Consistency): **0.0703**
+- Bootstrap accuracy difference, Debate − Direct QA: **-0.058** (95% CI: **[-0.125, 0.000]**)
+- Bootstrap accuracy difference, Debate − Self-Consistency: **-0.050** (95% CI: **[-0.100, -0.008]**)

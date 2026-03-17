@@ -1,10 +1,12 @@
+from __future__ import annotations
+
 from src.debate import DebateExecution, run_debate
 from src.types import Item
 
 
 class FakeClient:
     def __init__(self, payloads: list[dict]) -> None:
-        self.payloads = payloads
+        self.payloads = list(payloads)
         self.calls: list[dict] = []
 
     def create_json(self, **kwargs):  # noqa: ANN003
@@ -48,9 +50,14 @@ def make_judge(answer: str) -> dict:
     }
 
 
-def test_run_debate_skips_rounds_on_initial_consensus() -> None:
+def test_run_debate_skips_rounds_on_initial_consensus(monkeypatch) -> None:
+    from src.config import settings
+
+    monkeypatch.setattr(settings, "judge_panel_size", 1)
+
     client = FakeClient([make_answer("yes"), make_answer("yes"), make_judge("yes")])
     result = run_debate(client=client, prompts=FakePrompts(), item=Item(id="1", question="Q", ground_truth="yes"))
+
     assert isinstance(result, DebateExecution)
     assert result.consensus is True
     assert result.rounds == []
@@ -58,7 +65,11 @@ def test_run_debate_skips_rounds_on_initial_consensus() -> None:
     assert result.llm_call_count == 3
 
 
-def test_run_debate_enforces_minimum_three_rounds_before_early_stop() -> None:
+def test_run_debate_enforces_minimum_three_rounds_before_early_stop(monkeypatch) -> None:
+    from src.config import settings
+
+    monkeypatch.setattr(settings, "judge_panel_size", 1)
+
     payloads = [
         make_answer("yes", "a0"),
         make_answer("no", "b0"),
@@ -71,7 +82,14 @@ def test_run_debate_enforces_minimum_three_rounds_before_early_stop() -> None:
         make_judge("yes"),
     ]
     client = FakeClient(payloads)
-    result = run_debate(client=client, prompts=FakePrompts(), item=Item(id="1", question="Q", ground_truth="yes"), rounds_max_override=3)
+    result = run_debate(
+        client=client,
+        prompts=FakePrompts(),
+        item=Item(id="1", question="Q", ground_truth="yes"),
+        rounds_max_override=3,
+    )
+
+    assert isinstance(result, DebateExecution)
     assert result.consensus is False
     assert len(result.rounds) == 3
     assert result.llm_call_count == 9

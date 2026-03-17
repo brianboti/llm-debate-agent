@@ -1,0 +1,9 @@
+{
+  "run_id": "run_20260317T062935Z_77349ada",
+  "n_items": 120,
+  "accuracy_debate": 0.725,
+  "accuracy_direct": 0.7833333333333333,
+  "accuracy_sc": 0.775,
+  "mcnemar_debate_vs_direct_p": 0.09228515625,
+  "mcnemar_debate_vs_sc_p": 0.0703125
+}
