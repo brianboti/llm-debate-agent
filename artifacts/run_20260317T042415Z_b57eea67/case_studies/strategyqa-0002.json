@@ -1,0 +1,77 @@
+{
+  "item": {
+    "id": "strategyqa-0002",
+    "question": "Is the cuisine of Hawaii suitable for a vegan?",
+    "context": "",
+    "ground_truth": "no"
+  },
+  "consensus": true,
+  "initial_a": {
+    "answer": "yes",
+    "rationale": "Hawaiian cuisine offers a variety of vegan-friendly options, including fresh fruits, vegetables, rice, and traditional dishes like poke made with tofu instead of fish. The local emphasis on fresh, local ingredients provides ample choices for a vegan diet.",
+    "citations": []
+  },
+  "initial_b": {
+    "answer": "yes",
+    "rationale": "Hawaiian cuisine includes a variety of plant-based options such as fresh fruits, vegetables, and grains, making it suitable for vegans. Traditional dishes can be adapted to exclude animal products, and the availability of local produce supports a vegan diet.",
+    "citations": []
+  },
+  "debate_rounds": [],
+  "judge": {
+    "verdict_answer": "yes",
+    "confidence_1_to_5": 5,
+    "analysis": "Both debaters effectively argued that Hawaiian cuisine offers a variety of vegan-friendly options. However, Debater A's emphasis on traditional dishes like tofu poke adds a specific example that strengthens their argument. Debater B's points are valid but slightly less detailed.",
+    "debater_a_strongest": "Hawaiian cuisine offers a variety of vegan-friendly options, including fresh fruits, vegetables, rice, and traditional dishes like poke made with tofu instead of fish.",
+    "debater_a_weakest": "Lacks specific examples of how traditional dishes can be adapted.",
+    "debater_b_strongest": "Hawaiian cuisine includes a variety of plant-based options such as fresh fruits, vegetables, and grains, making it suitable for vegans.",
+    "debater_b_weakest": "Does not provide specific examples of traditional dishes that can be adapted.",
+    "reasoning": "The arguments presented by both debaters support the idea that Hawaiian cuisine is suitable for vegans, but the specificity in Debater A's argument gives them a slight edge."
+  },
+  "judge_panel": [
+    {
+      "verdict_answer": "yes",
+      "confidence_1_to_5": 5,
+      "analysis": "Both debaters effectively argued that Hawaiian cuisine offers a variety of vegan-friendly options. However, Debater A's emphasis on traditional dishes like tofu poke adds a specific example that strengthens their argument. Debater B's points are valid but slightly less detailed.",
+      "debater_a_strongest": "Hawaiian cuisine offers a variety of vegan-friendly options, including fresh fruits, vegetables, rice, and traditional dishes like poke made with tofu instead of fish.",
+      "debater_a_weakest": "Lacks specific examples of how traditional dishes can be adapted.",
+      "debater_b_strongest": "Hawaiian cuisine includes a variety of plant-based options such as fresh fruits, vegetables, and grains, making it suitable for vegans.",
+      "debater_b_weakest": "Does not provide specific examples of traditional dishes that can be adapted.",
+      "reasoning": "The arguments presented by both debaters support the idea that Hawaiian cuisine is suitable for vegans, but the specificity in Debater A's argument gives them a slight edge."
+    }
+  ],
+  "baselines": {
+    "direct": {
+      "answer": "yes",
+      "rationale": "Hawaiian cuisine includes a variety of plant-based foods such as fruits, vegetables, rice, and tofu, making it suitable for vegans.",
+      "citations": []
+    },
+    "self_consistency_samples": [
+      {
+        "answer": "yes",
+        "rationale": "Hawaii's cuisine includes a variety of fruits, vegetables, and plant-based dishes that can be suitable for a vegan diet. Traditional Hawaiian foods like poi, taro, and various tropical fruits align well with vegan dietary preferences.",
+        "citations": []
+      },
+      {
+        "answer": "yes",
+        "rationale": "Hawaiian cuisine includes a variety of fruits, vegetables, and grains that can be suitable for a vegan diet. Traditional dishes often utilize fresh produce, which aligns with vegan dietary requirements.",
+        "citations": []
+      },
+      {
+        "answer": "yes",
+        "rationale": "Hawaiian cuisine offers a variety of plant-based foods, including fruits, vegetables, and rice dishes, making it suitable for vegans. Traditional dishes can often be adapted to suit a vegan diet.",
+        "citations": []
+      }
+    ],
+    "self_consistency_vote": "yes"
+  },
+  "correct_debate": false,
+  "correct_direct": false,
+  "correct_sc": false,
+  "meta": {
+    "llm_call_budget": 3,
+    "rounds_executed": 0,
+    "stop_reason": "initial_consensus",
+    "judge_panel_size": 1,
+    "dataset_path": "/Users/brian/Downloads/llm-debate/data/strategyqa_120.jsonl"
+  }
+}

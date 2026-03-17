@@ -1,0 +1,77 @@
+{
+  "item": {
+    "id": "strategyqa-0081",
+    "question": "Did Harry Houdini's wife make psychics look foolish?",
+    "context": "",
+    "ground_truth": "yes"
+  },
+  "consensus": true,
+  "initial_a": {
+    "answer": "yes",
+    "rationale": "Harry Houdini's wife, Bess, actively participated in exposing fraudulent psychics, particularly after Houdini's death when she sought to communicate with him. Her efforts often highlighted the deceptive practices of these psychics, thereby making them appear foolish.",
+    "citations": []
+  },
+  "initial_b": {
+    "answer": "yes",
+    "rationale": "Harry Houdini's wife, Bess Houdini, actively participated in debunking psychics and mediums after Houdini's death, exposing fraudulent practices and challenging their legitimacy. This made them look foolish in the eyes of the public. Her efforts highlighted the deceptive nature of many so-called spiritualists, aligning with Houdini's own skepticism towards the occult.",
+    "citations": []
+  },
+  "debate_rounds": [],
+  "judge": {
+    "verdict_answer": "yes",
+    "confidence_1_to_5": 5,
+    "analysis": "Both debaters presented similar arguments regarding Bess Houdini's role in exposing fraudulent psychics. However, Debater B provided a slightly more detailed rationale, emphasizing the public perception of psychics as a result of her actions. Both arguments were strong, but Debater B's inclusion of the public's view added depth.",
+    "debater_a_strongest": "Bess actively participated in exposing fraudulent psychics, particularly after Houdini's death.",
+    "debater_a_weakest": "The argument lacked detail on the impact of her actions on public perception.",
+    "debater_b_strongest": "Bess Houdini's efforts highlighted the deceptive nature of many spiritualists, aligning with Houdini's skepticism.",
+    "debater_b_weakest": "The argument was somewhat repetitive and could have included more specific examples of her actions.",
+    "reasoning": "Bess Houdini's efforts in debunking psychics indeed made them look foolish, as both debaters agree on her significant role in exposing fraud, with Debater B providing a more compelling argument."
+  },
+  "judge_panel": [
+    {
+      "verdict_answer": "yes",
+      "confidence_1_to_5": 5,
+      "analysis": "Both debaters presented similar arguments regarding Bess Houdini's role in exposing fraudulent psychics. However, Debater B provided a slightly more detailed rationale, emphasizing the public perception of psychics as a result of her actions. Both arguments were strong, but Debater B's inclusion of the public's view added depth.",
+      "debater_a_strongest": "Bess actively participated in exposing fraudulent psychics, particularly after Houdini's death.",
+      "debater_a_weakest": "The argument lacked detail on the impact of her actions on public perception.",
+      "debater_b_strongest": "Bess Houdini's efforts highlighted the deceptive nature of many spiritualists, aligning with Houdini's skepticism.",
+      "debater_b_weakest": "The argument was somewhat repetitive and could have included more specific examples of her actions.",
+      "reasoning": "Bess Houdini's efforts in debunking psychics indeed made them look foolish, as both debaters agree on her significant role in exposing fraud, with Debater B providing a more compelling argument."
+    }
+  ],
+  "baselines": {
+    "direct": {
+      "answer": "no",
+      "rationale": "There is no evidence or context provided to suggest that Harry Houdini's wife made psychics look foolish.",
+      "citations": []
+    },
+    "self_consistency_samples": [
+      {
+        "answer": "no",
+        "rationale": "There is no evidence in the provided context to support that Harry Houdini's wife made psychics look foolish. Without specific information or historical context, one cannot conclude that she had such an effect.",
+        "citations": []
+      },
+      {
+        "answer": "yes",
+        "rationale": "Harry Houdini's wife, Bess Houdini, was known to have participated in exposing fraudulent psychics, particularly after Houdini's death. This involvement contributed to making some psychics appear foolish as they were revealed as charlatans.",
+        "citations": []
+      },
+      {
+        "answer": "yes",
+        "rationale": "Harry Houdini's wife, Bess Houdini, was known to have participated in exposing fraudulent psychics, particularly after Houdini's death, which contributed to the perception of psychics being foolish or deceptive.",
+        "citations": []
+      }
+    ],
+    "self_consistency_vote": "yes"
+  },
+  "correct_debate": true,
+  "correct_direct": false,
+  "correct_sc": true,
+  "meta": {
+    "llm_call_budget": 3,
+    "rounds_executed": 0,
+    "stop_reason": "initial_consensus",
+    "judge_panel_size": 1,
+    "dataset_path": "/Users/brian/Downloads/llm-debate/data/strategyqa_120.jsonl"
+  }
+}
