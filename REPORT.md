@@ -4,7 +4,7 @@
 
 This project implements a complete multi-agent debate pipeline for commonsense question answering. The system contains two debaters and one judge. Debater A argues for one answer, Debater B argues for the competing answer, and the judge reads the full transcript and selects the final verdict. I evaluated the system on a 120-question StrategyQA subset and compared it against two required baselines: Direct QA and Self-Consistency.
 
-My main research question was whether structured adversarial debate can improve answer quality over a single direct response. In this final run, the answer was **no**: the debate system produced useful transcripts and surfaced failure modes that are interesting from a reasoning perspective, but it did not outperform the baselines on this benchmark.
+My main research question was whether structured adversarial debate can improve answer quality over a single direct response. In the final single-judge run I report here, the answer was still **no** overall: the debate system generated useful transcripts and did recover a few errors, but it did not beat the simpler baselines on this benchmark.
 
 ---
 
@@ -104,7 +104,7 @@ I also fixed a correctness issue during development: self-consistency voting now
 
 ### 1.6 Development process and tools used
 
-I used LLM-based coding assistance during implementation for debugging, refactoring, UI scaffolding, and test-driven iteration. I used those tools mainly to accelerate engineering work, but I still validated the resulting code by running the backend tests, manually checking the frontend behavior, and reproducing the final experiment from saved scripts and logs.
+I used **Codex** as a coding assistant during implementation. I mainly used it for debugging, refactoring, UI iteration, test scaffolding, and some late-stage documentation cleanup. I did not use it to choose the dataset or to decide what conclusions to report. I checked the code and results myself by running the backend tests, building the frontend, and reproducing the saved experiments from the committed scripts and logs.
 
 ---
 
@@ -112,25 +112,25 @@ I used LLM-based coding assistance during implementation for debugging, refactor
 
 ### 2.1 Experimental setup
 
-The final experiment was run on the reproducible 120-question StrategyQA subset stored in `data/strategyqa_120.jsonl`. The evaluation script executed the debate pipeline on every question, saved a JSONL transcript file for the run, and then generated aggregate metrics and report artifacts.
+The main single-judge experiment was run on the reproducible 120-question StrategyQA subset stored in `data/strategyqa_120.jsonl`. The evaluation script executed the debate pipeline on every question, saved a JSONL transcript file for the run, and then generated aggregate metrics and report artifacts.
 
 Final run ID:
 
-`run_20260317T042415Z_b57eea67`
+`run_20260318T045614Z_0cf78544`
 
 Final run timestamp:
 
-`2026-03-17 04:24:15 UTC`
+`2026-03-18 04:56:14 UTC`
 
 Main run artifacts:
 
-- `runs/run_20260317T042415Z_b57eea67.jsonl`
-- `runs/run_20260317T042415Z_b57eea67.summary.json`
-- `artifacts/run_20260317T042415Z_b57eea67/metrics_table.md`
-- `artifacts/run_20260317T042415Z_b57eea67/stats_summary.md`
-- `artifacts/run_20260317T042415Z_b57eea67/failure_patterns.md`
-- `artifacts/run_20260317T042415Z_b57eea67/case_studies/index.md`
-- `artifacts/run_20260317T042415Z_b57eea67/accuracy_comparison.png`
+- `runs/run_20260318T045614Z_0cf78544.jsonl`
+- `runs/run_20260318T045614Z_0cf78544.summary.json`
+- `artifacts/run_20260318T045614Z_0cf78544/metrics_table.md`
+- `artifacts/run_20260318T045614Z_0cf78544/stats_summary.md`
+- `artifacts/run_20260318T045614Z_0cf78544/failure_patterns.md`
+- `artifacts/run_20260318T045614Z_0cf78544/case_studies/index.md`
+- `artifacts/run_20260318T045614Z_0cf78544/accuracy_comparison.png`
 
 ### 2.2 Quantitative results
 
@@ -138,67 +138,65 @@ The final accuracy table is reproduced below.
 
 | Method | Accuracy | Correct / Total |
 |---|---:|---:|
-| Debate + Judge | 0.733 | 88 / 120 |
-| Direct QA | 0.808 | 97 / 120 |
+| Debate + Judge | 0.742 | 89 / 120 |
+| Direct QA | 0.775 | 93 / 120 |
 | Self-Consistency | 0.775 | 93 / 120 |
 
-The main result is that **Direct QA performed best**, followed by **Self-Consistency**, followed by **Debate + Judge**.
+The main result is that **Direct QA and Self-Consistency tied for best**, and **Debate + Judge** finished slightly behind them.
 
 ### 2.3 Statistical significance
 
 I used McNemar’s test and bootstrap confidence intervals to compare debate against the baselines.
 
 - Number of questions: **120**
-- McNemar p-value (Debate vs Direct QA): **0.0117**
-- McNemar p-value (Debate vs Self-Consistency): **0.1797**
-- Bootstrap accuracy difference, Debate − Direct QA: **-0.074** (95% CI: **[-0.133, -0.025]**)
-- Bootstrap accuracy difference, Debate − Self-Consistency: **-0.041** (95% CI: **[-0.092, 0.008]**)
+- McNemar p-value (Debate vs Direct QA): **0.3877**
+- McNemar p-value (Debate vs Self-Consistency): **0.3877**
+- Bootstrap accuracy difference, Debate − Direct QA: **-0.034** (95% CI: **[-0.092, 0.017]**)
+- Bootstrap accuracy difference, Debate − Self-Consistency: **-0.034** (95% CI: **[-0.092, 0.025]**)
 
-These numbers suggest that the debate system was **reliably worse than Direct QA** on this run. The comparison to Self-Consistency is weaker: debate was still worse on average, but the confidence interval crosses zero and McNemar’s test is not significant at conventional thresholds.
+On this run, debate was worse in raw accuracy, but the gap was **not statistically significant** against either baseline. I still would not claim that debate helped here, because it did not win on the headline metric, but the March 18 run is a closer negative result than the earlier pilot-style runs suggested.
 
 ### 2.4 Figure
 
-![Accuracy comparison](artifacts/run_20260317T042415Z_b57eea67/accuracy_comparison.png)
+![Accuracy comparison](artifacts/run_20260318T045614Z_0cf78544/accuracy_comparison.png)
 
 ### 2.5 Interpretation of the quantitative results
 
-This experiment did not support the hypothesis that adversarial debate improves answer accuracy for this benchmark under my current setup. Instead, it suggests a more nuanced picture:
+This experiment still did not support the hypothesis that adversarial debate improves answer accuracy for this benchmark under my current setup, but the result is a little more nuanced than a simple “debate fails” story:
 
-1. **Direct QA was strongest overall.**  
-   For many StrategyQA items, a well-formed direct answer was already sufficient, and adding debate rounds introduced extra opportunities for drift, overthinking, or persuasive but incorrect reasoning.
+1. **The simpler baselines were still better overall.**  
+   Direct QA and Self-Consistency both finished at 93/120, while Debate + Judge finished at 89/120.
 
-2. **Self-Consistency recovered some errors from Direct QA but still did not beat Direct QA overall.**  
-   This suggests that extra test-time compute can help on some questions, but majority voting also carries its own failure modes when the model repeatedly makes the same wrong assumption.
+2. **The gap was smaller than I expected.**  
+   Debate did not beat the baselines, but it also was not statistically separated from them in this run. That matters because it suggests the pipeline is not obviously hopeless; it is just not clearly better in its current form.
 
-3. **Debate underperformed despite using more structured reasoning.**  
-   In this project, longer interaction often increased rhetorical complexity without increasing factual accuracy. In several failure cases, the judge rewarded argument quality or coherence rather than correctness.
+3. **Debate sometimes helped, just not often enough.**  
+   In this run, debate beat both baselines on two items, which means the architecture occasionally recovered something useful that the simpler methods missed. The problem is that those wins were outweighed by other cases where the extra interaction added noise or let the judge favor a polished but wrong line of reasoning.
 
-This result is still valuable. A negative result is informative because the assignment is fundamentally about investigating whether debate helps, not assuming that it must help.
+For me, that is still a useful result. The point of the assignment was to test whether debate helps, not to assume that it should.
 
 ---
 
 ## 3. Analysis
 
-In this section I analyze representative transcript patterns from the final run.
+In this section I analyze representative transcript patterns from the final single-judge run.
 
-### 3.1 Case study A: all methods fail because the benchmark label does not match the model’s natural interpretation
+### 3.1 Case study A: all methods fail because all three systems fall into the same framing mistake
 
-**Example:** `strategyqa-0002`  
-**Question:** *Is the cuisine of Hawaii suitable for a vegan?*  
-**Ground truth:** `no`  
-**Debate:** `yes`  
-**Direct QA:** `yes`  
-**Self-Consistency:** `yes`  
+**Example:** `strategyqa-0014`  
+**Question:** *Is electricity necessary to balance an account in Microsoft Excel?*  
+**Ground truth:** `yes`  
+**Debate:** `no`  
+**Direct QA:** `no`  
+**Self-Consistency:** `no`  
 **Debate rounds:** `0`  
 **Stop reason:** `initial_consensus`
 
-This is an important failure case because it shows that the debate system was not uniquely at fault. All three methods agreed on the same answer, and they all agreed immediately. In other words, the problem was not a lack of debate rounds or a weak judge; it was that the models’ default interpretation of the question did not align with the benchmark label.
+This is a good example of a failure that debate never had a chance to fix. All three methods gave the same wrong answer immediately. The likely issue is not reasoning depth but framing: the models seem to interpret “balance an account” as an accounting task that can be done in the abstract or on paper, while the benchmark label takes the wording literally and treats **using Microsoft Excel** as requiring electricity.
 
-The model interpreted the question as “Can a vegan find suitable food in Hawaiian cuisine?” Under that interpretation, `yes` is a natural answer because fruits, vegetables, taro, and plant-based adaptations obviously exist. However, the benchmark label is `no`, which likely assumes a stricter interpretation centered on the canonical identity of Hawaiian cuisine rather than its adaptable menu options.
+That distinction matters because the debate architecture only helps if one side notices the framing issue and pushes back. Here that never happened. The system took early agreement as a sign that the item was easy, when in fact it was a shared misread.
 
-This case matters because it shows one of the main limitations of using debate for commonsense QA: if both debaters start from the same incorrect framing, the debate never begins. The system records consensus and immediately hands that consensus to the judge. No adversarial pressure is created.
-
-**Takeaway:** debate cannot correct an error if both agents share the same initial misinterpretation. This is a framing problem rather than a transcript-quality problem.
+**Takeaway:** if both debaters start from the same bad interpretation, the debate stage cannot rescue the answer.
 
 ### 3.2 Case study B: long debate does not guarantee error correction
 
@@ -219,48 +217,50 @@ This is one of the clearest examples in the run of “more reasoning steps” no
 
 **Takeaway:** debate can fail even when given maximum interaction budget, especially when repeated turns do not introduce new evidence or better disambiguation.
 
-### 3.3 Case study C: diversified initial reasoning can help even without multi-round debate
+### 3.3 Case study C: multiple independent starts can help even without a full debate
 
-**Example:** `strategyqa-0081`  
-**Question:** *Did Harry Houdini's wife make psychics look foolish?*  
-**Ground truth:** `yes`  
-**Debate:** `yes`  
-**Direct QA:** `no`  
-**Self-Consistency:** `yes`  
+**Example:** `strategyqa-0050`  
+**Question:** *Could Eddie Hall hypothetically deadlift the world's largest cheeseburger?*  
+**Ground truth:** `no`  
+**Debate:** `no`  
+**Direct QA:** `yes`  
+**Self-Consistency:** `no`  
 **Debate rounds:** `0`  
 **Stop reason:** `initial_consensus`
 
-This is the most interesting “success” example in the final run because it shows that debate can help even when no explicit multi-round exchange occurs. In this case, the debate system and self-consistency were correct, while direct QA was wrong.
+This was one of the cleaner “success” cases in the run. The debate system and self-consistency were correct, while direct QA was wrong. What I find interesting here is that the debate pipeline never needed a back-and-forth exchange. Both debaters independently started with the correct answer, so the system stopped early.
 
-The key point is that the debate architecture gives two independently generated initial positions before any interaction happens. Even though the system skipped the debate rounds due to consensus, that consensus still reflects a useful kind of diversity: two separate initial reasoning paths both landed on the correct answer. This resembles a lightweight ensemble effect.
+My reading is that the gain here came from diversity, not from rebuttal. The direct answer seems to have overfocused on Eddie Hall’s strength and underweighted the scale implied by “the world’s largest cheeseburger.” Once the system got two independent initial passes, the answer corrected itself before debate rounds even started.
 
-The fact that self-consistency also succeeded here strengthens that interpretation. The benefit seems to come not from adversarial rebuttal but from **multiple independent attempts** at the problem.
+The fact that self-consistency also got this one right points in the same direction. In other words, some of the value in a debate pipeline may come from getting multiple initial attempts, not necessarily from the multi-round adversarial exchange.
 
-**Takeaway:** part of the value of debate may come from diversified initial reasoning rather than from the debate rounds themselves.
+**Takeaway:** some of the benefit of debate may actually come from diversified initial reasoning before the debate even begins.
 
 ### 3.4 Aggregate failure patterns
 
 The final run produced several recurring patterns:
 
-- `debate_beats_both`: **0**
-- `debate_loses_to_both`: **6**
-- `debate_and_sc_beat_direct`: **1**
-- `all_fail`: **21**
-- `max_rounds_reached`: **12**
+- `debate_beats_both`: **2**
+- `debate_loses_to_both`: **8**
+- `debate_and_sc_beat_direct`: **2**
+- `all_fail`: **23**
+- `max_rounds_reached`: **18**
 
-These counts are generated directly from the saved run log and exported to `artifacts/run_20260317T042415Z_b57eea67/failure_patterns.md`.
+These counts are generated directly from the saved run log and exported to `artifacts/run_20260318T045614Z_0cf78544/failure_patterns.md`.
 
 These counts help explain the final leaderboard.
 
-First, the fact that debate never beat both baselines is a strong signal that my current debate prompt design was not extracting enough benefit from adversarial interaction.
+First, debate did beat both baselines on two items, so I do not think the architecture was useless. There were cases where the extra structure genuinely helped.
 
-Second, the presence of 21 “all fail” cases shows that some StrategyQA items are intrinsically difficult or label-sensitive. For those questions, changing the reasoning protocol alone is not enough.
+Second, the fact that debate still lost to both baselines on eight items shows that those wins were not frequent enough to change the overall ranking.
 
-Third, the 12 max-round cases show that long debates were not rare. In practice, these longer transcripts often reflected persistent disagreement rather than productive correction.
+Third, the 23 “all fail” cases show that some StrategyQA items remain difficult or label-sensitive no matter which inference strategy I used.
+
+Fourth, the 18 max-round cases show that long debates were fairly common. In practice, those longer transcripts often reflected persistent disagreement rather than real error correction.
 
 ### 3.5 Connection to theory
 
-Theoretical work on AI debate assumes that adversarial interaction can expose hidden flaws in reasoning and make truth easier for a judge to recover. My implementation only partially achieved that goal. In some cases, the system did create meaningful disagreement. However, the final experiment suggests three practical limitations:
+Theoretical work on AI debate assumes that adversarial interaction can expose hidden flaws in reasoning and make truth easier for a judge to recover. My implementation only partially achieved that goal. In some cases, the system did create useful disagreement, and in a couple of examples it even beat both baselines. But the final run still points to three practical limitations:
 
 1. if both agents begin from the same bad framing, there is no debate benefit;
 2. if the debate repeats weak claims instead of generating new evidence, longer transcripts do not help;
@@ -378,11 +378,11 @@ This bonus result is still informative. It suggests that the current judge promp
 
 ## 5. Conclusion
 
-This project successfully implemented a complete LLM Debate + Judge pipeline, including a working backend, a functional web UI, reproducible logging, evaluation scripts, and a 120-question final benchmark run.
+This project successfully implemented a complete LLM Debate + Judge pipeline, including a working backend, a functional web UI, reproducible logging, evaluation scripts, and a 120-question benchmark run.
 
-The final quantitative result was negative for the central hypothesis: under my current prompt design and configuration, **debate did not outperform simpler baselines**. Direct QA achieved the highest accuracy, and Self-Consistency also exceeded Debate + Judge.
+The final quantitative result was still negative for the central hypothesis: under my current prompt design and configuration, **debate did not outperform the simpler baselines**. In the main single-judge run, Debate + Judge reached `89/120`, while Direct QA and Self-Consistency both reached `93/120`. That said, the gap was not statistically significant on this run, and debate did beat both baselines on a small number of items.
 
-I do not view this as a failed project. Instead, I view it as a useful empirical result. The system worked technically, the experiments were reproducible, and the failure analysis exposed why debate is difficult to make effective in practice. The main lesson is that adversarial structure alone is not enough. For debate to beat simpler inference-time methods, the prompts and judging procedure must reliably reward truth-seeking behavior rather than just fluent argumentation.
+I do not see that as a failed project. The system worked, the experiments were reproducible, and the transcript analysis made the tradeoffs visible. My main takeaway is that adversarial structure by itself is not enough. For debate to beat simpler inference-time methods, the prompts and the judging procedure have to reward actual error correction, not just fluent argumentation.
 
 ---
 

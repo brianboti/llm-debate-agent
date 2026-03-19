@@ -22,7 +22,7 @@ This repo is designed to satisfy the code-side deliverables from the assignment:
 - JSON logging for every `/run` and `/batch` execution
 - Direct QA and Self-Consistency baselines
 - optional multi-judge jury mode via `JUDGE_PANEL_SIZE`
-- bonus-ready jury comparison workflow for single-vs-panel analysis and disagreement diagnostics
+- jury comparison workflow for single-vs-panel analysis and disagreement diagnostics
 - report artifact generation from saved logs
 - functional web UI for single-question runs
 - paired statistical summaries for debate-vs-baseline comparisons

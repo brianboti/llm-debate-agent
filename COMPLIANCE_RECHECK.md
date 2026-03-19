@@ -5,7 +5,7 @@ This file is a requirement-by-requirement audit of the repository against the up
 ## 1. Submission format
 **Requirement:** public GitHub repository link containing code, blog post/report, and artifacts.
 
-**Status:** **Satisfied in code and artifacts, pending final commit/push of the intended run logs.**
+**Status:** **Satisfied in this checkout.**
 - Code is present.
 - `REPORT.md` is present as a filled report/blog-style write-up.
 - Final experiment artifacts and run outputs are present for a real 120-item run.
