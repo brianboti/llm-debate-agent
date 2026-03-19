@@ -1,0 +1,11 @@
+[
+  {
+    "item_id": "strategyqa-0003",
+    "question": "Is capturing giant squid in natural habitat impossible with no gear?",
+    "ground_truth": "yes",
+    "panel_majority_answer": "yes",
+    "final_jury_answer": "no",
+    "majority_correct": true,
+    "jury_correct": false
+  }
+]

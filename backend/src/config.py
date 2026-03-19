@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+from typing import Any
 
 from pydantic import Field, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -55,6 +56,7 @@ class Settings(BaseSettings):
 
     # Limits
     max_output_tokens: int = Field(600, alias="MAX_OUTPUT_TOKENS", ge=1)
+    openai_timeout_seconds: float = Field(60.0, alias="OPENAI_TIMEOUT_SECONDS", gt=0.0)
 
     # Server
     cors_origins: str = Field("http://localhost:5173", alias="CORS_ORIGINS")
@@ -86,6 +88,49 @@ class Settings(BaseSettings):
     def has_real_api_key(self) -> bool:
         key = (self.openai_api_key or "").strip()
         return bool(key and key != _PLACEHOLDER_API_KEY)
+
+    def experiment_snapshot(
+        self,
+        *,
+        rounds_max_override: int | None = None,
+        judge_panel_size_override: int | None = None,
+        prompt_manifest: dict[str, dict[str, object]] | None = None,
+    ) -> dict[str, Any]:
+        requested_rounds = rounds_max_override or self.debate_max_rounds
+        effective_rounds_max = max(self.debate_min_rounds, requested_rounds)
+        effective_panel_size = judge_panel_size_override or self.judge_panel_size
+        return {
+            "provider": "openai",
+            "api": "responses",
+            "models": {
+                "debater": self.openai_model_debater,
+                "judge": self.openai_model_judge,
+            },
+            "temperatures": {
+                "debater": self.temp_debater,
+                "judge": self.temp_judge,
+                "baseline": self.temp_baseline,
+            },
+            "protocol": {
+                "debate_min_rounds": self.debate_min_rounds,
+                "debate_max_rounds_requested": requested_rounds,
+                "debate_max_rounds_effective": effective_rounds_max,
+                "debate_convergence_rounds": self.debate_convergence_rounds,
+                "judge_panel_size": effective_panel_size,
+            },
+            "limits": {
+                "max_output_tokens": self.max_output_tokens,
+                "openai_timeout_seconds": self.openai_timeout_seconds,
+            },
+            "baselines": {
+                "default_self_consistency_samples": self.self_consistency_samples,
+            },
+            "paths": {
+                "prompts_dir": str(self.prompts_path()),
+                "runs_dir": str(self.runs_path()),
+            },
+            "prompt_templates": prompt_manifest or {},
+        }
 
 
 settings = Settings()

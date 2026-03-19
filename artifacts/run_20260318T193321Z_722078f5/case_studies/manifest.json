@@ -1,0 +1,37 @@
+[
+  {
+    "label": "all_fail_initial_consensus",
+    "description": "All three methods fail and the debate ends before any rounds.",
+    "item_id": "strategyqa-0014",
+    "question": "Is electricity necessary to balance an account in Microsoft Excel?",
+    "path": "case_studies/strategyqa-0014.json"
+  },
+  {
+    "label": "debate_loses_to_both_max_rounds",
+    "description": "Debate uses the full round budget and still loses to both baselines.",
+    "item_id": "strategyqa-0003",
+    "question": "Is capturing giant squid in natural habitat impossible with no gear?",
+    "path": "case_studies/strategyqa-0003.json"
+  },
+  {
+    "label": "debate_and_sc_beat_direct",
+    "description": "Debate and self-consistency recover an answer that direct QA misses.",
+    "item_id": "strategyqa-0050",
+    "question": "Could Eddie Hall hypothetically deadlift the world's largest cheeseburger?",
+    "path": "case_studies/strategyqa-0050.json"
+  },
+  {
+    "label": "all_correct_initial_consensus",
+    "description": "All methods are correct and the debate resolves immediately by consensus.",
+    "item_id": "strategyqa-0001",
+    "question": "Is Mixed martial arts totally original from Roman Colosseum games?",
+    "path": "case_studies/strategyqa-0001.json"
+  },
+  {
+    "label": "adaptive_convergence_example",
+    "description": "Debaters converge after multiple rounds instead of hitting the maximum budget.",
+    "item_id": "strategyqa-0005",
+    "question": "Would someone in Mumbai refer to Solanum melongena as an eggplant?",
+    "path": "case_studies/strategyqa-0005.json"
+  }
+]

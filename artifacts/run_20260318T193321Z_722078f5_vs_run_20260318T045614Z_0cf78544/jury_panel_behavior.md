@@ -1,0 +1,10 @@
+- Jury run panel size: **3**
+- Unanimous panel items: **119 / 120**
+- Split panel items: **1 / 120**
+- Accuracy on unanimous items: **0.748**
+- Accuracy on split items: **0.000**
+- Panel-majority accuracy: **0.750**
+- Deliberated-jury accuracy: **0.742**
+- Deliberation changed the majority answer on **1** items.
+- Deliberation changed the outcome from wrong to correct on **0** items.
+- Deliberation changed the outcome from correct to wrong on **1** items.

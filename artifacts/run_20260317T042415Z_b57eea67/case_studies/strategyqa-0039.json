@@ -1,0 +1,203 @@
+{
+  "item": {
+    "id": "strategyqa-0039",
+    "question": "Did Disney's second film rip off a prophet story?",
+    "context": "",
+    "ground_truth": "yes"
+  },
+  "consensus": false,
+  "initial_a": {
+    "answer": "yes",
+    "rationale": "Disney's second film, 'The Rescuers,' has been criticized for borrowing themes and elements from various sources, including biblical stories. The narrative of rescuing and redemption parallels certain prophet stories, suggesting a potential influence or 'rip off.'",
+    "citations": []
+  },
+  "initial_b": {
+    "answer": "no",
+    "rationale": "There is no evidence or context provided to support the claim that Disney's second film is a rip-off of a prophet story. Without specific details or examples, this assertion remains unsubstantiated.",
+    "citations": []
+  },
+  "debate_rounds": [
+    {
+      "round_index": 1,
+      "debater_a": {
+        "answer": "yes",
+        "rationale": "Disney's second film, 'The Rescuers,' incorporates themes of rescue and redemption that can be seen as parallel to various prophet stories, suggesting that it may borrow from those narratives. While it may not be a direct rip-off, the similarities in themes indicate possible influence.",
+        "citations": []
+      },
+      "debater_b": {
+        "answer": "no",
+        "rationale": "Debater A's argument relies on vague parallels between themes of rescue and redemption in 'The Rescuers' and prophet stories. These themes are common in many narratives across cultures and do not constitute a direct 'rip-off.' Without specific examples of borrowing or direct influence, the claim remains unfounded.",
+        "citations": []
+      }
+    },
+    {
+      "round_index": 2,
+      "debater_a": {
+        "answer": "yes",
+        "rationale": "While 'The Rescuers' may not directly copy a specific prophet story, its themes of rescue and redemption resonate with many religious narratives, including those of prophets. This thematic overlap suggests a borrowing of concepts, potentially classifying it as a rip-off of those broader stories.",
+        "citations": []
+      },
+      "debater_b": {
+        "answer": "no",
+        "rationale": "Debater A's claim does not establish a clear direct connection between 'The Rescuers' and any specific prophet story. The themes of rescue and redemption are universal and appear in countless narratives across cultures, making it inaccurate to label this as a rip-off. Without concrete examples of direct borrowing, the assertion remains speculative and unsubstantiated.",
+        "citations": []
+      }
+    },
+    {
+      "round_index": 3,
+      "debater_a": {
+        "answer": "no",
+        "rationale": "The themes of rescue and redemption in 'The Rescuers' are indeed prevalent across various narratives, including many religious contexts. However, these themes are universal and not exclusive to prophet stories, making it inaccurate to claim that the film is a direct rip-off. Without specific examples of direct borrowing, the assertion lacks substantiation.",
+        "citations": []
+      },
+      "debater_b": {
+        "answer": "no",
+        "rationale": "Debater A's argument fails to provide a specific, direct connection between 'The Rescuers' and any prophet story. The themes mentioned are universal and found in numerous narratives, which undermines the claim of a 'rip-off.' Without clear evidence of direct borrowing, the assertion remains unproven and speculative.",
+        "citations": []
+      }
+    },
+    {
+      "round_index": 4,
+      "debater_a": {
+        "answer": "no",
+        "rationale": "The argument that 'The Rescuers' is a rip-off of a prophet story lacks specific evidence. While themes of rescue and redemption are present, they are common across many narratives and cultures, making it inaccurate to label the film as a direct copy or rip-off. Without concrete examples of direct influence, the claim remains speculative and unsubstantiated.",
+        "citations": []
+      },
+      "debater_b": {
+        "answer": "no",
+        "rationale": "Debater A's argument continues to lack specific evidence linking 'The Rescuers' to any prophet story. The themes of rescue and redemption are indeed universal and not exclusive to any single narrative, including those of prophets. Thus, claiming it is a rip-off remains speculative and unsubstantiated.",
+        "citations": []
+      }
+    }
+  ],
+  "judge": {
+    "verdict_answer": "no",
+    "confidence_1_to_5": 5,
+    "analysis": "Debater B provided a more compelling argument by emphasizing the universality of themes like rescue and redemption, which are found in many narratives, not just prophet stories. Debater A's arguments, while highlighting thematic parallels, lacked specific evidence to substantiate the claim of a direct 'rip-off.'",
+    "debater_a_strongest": "Thematic parallels between 'The Rescuers' and various prophet stories suggest possible influence.",
+    "debater_a_weakest": "Failure to provide specific examples of direct borrowing or influence.",
+    "debater_b_strongest": "Clear articulation that themes of rescue and redemption are universal and not exclusive to prophet stories.",
+    "debater_b_weakest": "Relying heavily on the absence of evidence without addressing potential thematic influences directly.",
+    "reasoning": "The arguments presented by Debater B were stronger and more substantiated, leading to the conclusion that the claim of a 'rip-off' is unfounded."
+  },
+  "judge_panel": [
+    {
+      "verdict_answer": "no",
+      "confidence_1_to_5": 5,
+      "analysis": "Debater B provided a more compelling argument by emphasizing the universality of themes like rescue and redemption, which are found in many narratives, not just prophet stories. Debater A's arguments, while highlighting thematic parallels, lacked specific evidence to substantiate the claim of a direct 'rip-off.'",
+      "debater_a_strongest": "Thematic parallels between 'The Rescuers' and various prophet stories suggest possible influence.",
+      "debater_a_weakest": "Failure to provide specific examples of direct borrowing or influence.",
+      "debater_b_strongest": "Clear articulation that themes of rescue and redemption are universal and not exclusive to prophet stories.",
+      "debater_b_weakest": "Relying heavily on the absence of evidence without addressing potential thematic influences directly.",
+      "reasoning": "The arguments presented by Debater B were stronger and more substantiated, leading to the conclusion that the claim of a 'rip-off' is unfounded."
+    }
+  ],
+  "baselines": {
+    "direct": {
+      "answer": "no",
+      "rationale": "Disney's second film, 'Pinocchio', is based on the Italian novel by Carlo Collodi and does not directly rip off a prophet story.",
+      "citations": []
+    },
+    "self_consistency_samples": [
+      {
+        "answer": "no",
+        "rationale": "There is no evidence or context provided to suggest that Disney's second film is based on or rip-offs a prophet story. Disney's films are typically original or inspired by folklore, fairy tales, or classic literature rather than specific religious narratives.",
+        "citations": []
+      },
+      {
+        "answer": "no",
+        "rationale": "Disney's second film, 'Fantasia', is an animated musical feature that does not specifically adapt any prophet story. It is more of an artistic interpretation of classical music rather than a narrative film.",
+        "citations": []
+      },
+      {
+        "answer": "no",
+        "rationale": "Disney's second film, 'Pinocchio', is based on the Italian novel 'The Adventures of Pinocchio' by Carlo Collodi, which does not relate to a prophet story. Therefore, it did not rip off a prophet story.",
+        "citations": []
+      },
+      {
+        "answer": "no",
+        "rationale": "Disney's second film, 'Pinocchio', does not rip off a prophet story; it is based on the Italian novel 'The Adventures of Pinocchio' by Carlo Collodi, which is a fantasy tale rather than a religious narrative.",
+        "citations": []
+      },
+      {
+        "answer": "no",
+        "rationale": "Disney's second film, which was 'Pinocchio', is not based on a prophet story. It is an adaptation of Carlo Collodi's novel and focuses on themes of morality and personal growth, rather than religious or prophetic narratives.",
+        "citations": []
+      },
+      {
+        "answer": "no",
+        "rationale": "There is no information provided to suggest that Disney's second film is based on a prophet story, nor is there any context to indicate that it could be considered a 'rip-off.'",
+        "citations": []
+      },
+      {
+        "answer": "no",
+        "rationale": "Disney's second film, 'Pinocchio,' is based on the Italian children's novel 'The Adventures of Pinocchio' by Carlo Collodi, which does not have direct connections to prophet stories. Therefore, it cannot be considered a rip-off of a prophet story.",
+        "citations": []
+      },
+      {
+        "answer": "no",
+        "rationale": "Disney's second film, 'Pinocchio', is an original story based on the Italian novel by Carlo Collodi, and it does not derive from or replicate any known prophet story. Therefore, it cannot be considered a rip-off of such tales.",
+        "citations": []
+      },
+      {
+        "answer": "no",
+        "rationale": "Disney's second film, 'Pinocchio', is based on a children's story rather than a prophetic narrative. There is no evidence to suggest it was inspired by or ripped off a prophet story.",
+        "citations": []
+      },
+      {
+        "answer": "no",
+        "rationale": "Disney's second film, 'Pinocchio,' does not rip off a prophet story; it is based on a children's novel by Carlo Collodi about a wooden puppet, not a religious figure or story.",
+        "citations": []
+      },
+      {
+        "answer": "no",
+        "rationale": "Disney's second film, 'Pinocchio', is based on a children's story by Carlo Collodi and does not directly rip off any prophet story.",
+        "citations": []
+      }
+    ],
+    "self_consistency_vote": "no"
+  },
+  "correct_debate": false,
+  "correct_direct": false,
+  "correct_sc": false,
+  "meta": {
+    "llm_call_budget": 11,
+    "rounds_executed": 4,
+    "stop_reason": "adaptive_convergence_after_2_agreements",
+    "judge_panel_size": 1,
+    "dataset_path": "/Users/brian/Downloads/llm-debate/data/strategyqa_120.jsonl",
+    "experiment_config": {
+      "provider": "openai",
+      "api": "responses",
+      "models": {
+        "debater": "gpt-4o-mini",
+        "judge": "gpt-4o-mini"
+      },
+      "temperatures": {
+        "debater": 0.7,
+        "judge": 0.2,
+        "baseline": 0.2
+      },
+      "protocol": {
+        "debate_min_rounds": 3,
+        "debate_max_rounds_requested": 6,
+        "debate_max_rounds_effective": 6,
+        "debate_convergence_rounds": 2,
+        "judge_panel_size": 1
+      },
+      "limits": {
+        "max_output_tokens": 600
+      },
+      "baselines": {
+        "default_self_consistency_samples": 9
+      },
+      "paths": {
+        "prompts_dir": "/Users/brian/Downloads/llm-debate/prompts",
+        "runs_dir": "/Users/brian/Downloads/llm-debate/runs"
+      },
+      "prompt_templates": {}
+    },
+    "case_study_label": "adaptive_convergence_example",
+    "case_study_description": "Debaters converge after multiple rounds instead of hitting the maximum budget."
+  }
+}

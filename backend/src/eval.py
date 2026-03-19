@@ -15,6 +15,9 @@ def compute_summary(run_id: str, results: Iterable[ItemResult]) -> BatchSummary:
     debate = sum(result.correct_debate for result in results_list)
     direct = sum(result.correct_direct for result in results_list)
     sc = sum(result.correct_sc for result in results_list)
+    first_meta = results_list[0].meta if results_list else {}
+    dataset_path = first_meta.get("dataset_path")
+    experiment_config = first_meta.get("experiment_config", {})
 
     return BatchSummary(
         run_id=run_id,
@@ -24,6 +27,8 @@ def compute_summary(run_id: str, results: Iterable[ItemResult]) -> BatchSummary:
         accuracy_sc=sc / n if n else 0.0,
         mcnemar_debate_vs_direct_p=_mcnemar_p(results_list, a="debate", b="direct"),
         mcnemar_debate_vs_sc_p=_mcnemar_p(results_list, a="debate", b="sc"),
+        dataset_path=str(dataset_path) if dataset_path is not None else None,
+        experiment_config=experiment_config if isinstance(experiment_config, dict) else {},
     )
 
 

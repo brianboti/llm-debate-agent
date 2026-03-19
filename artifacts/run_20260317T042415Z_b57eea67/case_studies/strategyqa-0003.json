@@ -211,6 +211,39 @@
     "rounds_executed": 6,
     "stop_reason": "max_rounds_reached",
     "judge_panel_size": 1,
-    "dataset_path": "/Users/brian/Downloads/llm-debate/data/strategyqa_120.jsonl"
+    "dataset_path": "/Users/brian/Downloads/llm-debate/data/strategyqa_120.jsonl",
+    "experiment_config": {
+      "provider": "openai",
+      "api": "responses",
+      "models": {
+        "debater": "gpt-4o-mini",
+        "judge": "gpt-4o-mini"
+      },
+      "temperatures": {
+        "debater": 0.7,
+        "judge": 0.2,
+        "baseline": 0.2
+      },
+      "protocol": {
+        "debate_min_rounds": 3,
+        "debate_max_rounds_requested": 6,
+        "debate_max_rounds_effective": 6,
+        "debate_convergence_rounds": 2,
+        "judge_panel_size": 1
+      },
+      "limits": {
+        "max_output_tokens": 600
+      },
+      "baselines": {
+        "default_self_consistency_samples": 9
+      },
+      "paths": {
+        "prompts_dir": "/Users/brian/Downloads/llm-debate/prompts",
+        "runs_dir": "/Users/brian/Downloads/llm-debate/runs"
+      },
+      "prompt_templates": {}
+    },
+    "case_study_label": "debate_loses_to_both_max_rounds",
+    "case_study_description": "Debate uses the full round budget and still loses to both baselines."
   }
 }

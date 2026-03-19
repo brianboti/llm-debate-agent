@@ -8,7 +8,7 @@ Context:
 
 Instructions:
 - Use ordinary real-world commonsense unless the question explicitly asks about fictional or hypothetical rules.
-- Produce a direct answer and a concise justification.
+- Produce a direct answer and concise step-by-step reasoning.
 - The `answer` field must be exactly `yes` or `no`.
 - Put all explanation in `rationale`, not in `answer`.
 - Use citations only for short evidence snippets or identifiers from the provided context.

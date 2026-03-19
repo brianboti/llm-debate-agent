@@ -5,10 +5,10 @@ This file is a requirement-by-requirement audit of the repository against the up
 ## 1. Submission format
 **Requirement:** public GitHub repository link containing code, blog post/report, and artifacts.
 
-**Status:** **Partially satisfied by repository structure.**
+**Status:** **Satisfied in code and artifacts, pending final commit/push of the intended run logs.**
 - Code is present.
-- `REPORT.md` is present as a student-fill submission scaffold.
-- Final experiment artifacts still need to be generated from a real 100+ item run.
+- `REPORT.md` is present as a filled report/blog-style write-up.
+- Final experiment artifacts and run outputs are present for a real 120-item run.
 
 ## 2. Required system architecture
 **Requirement:** initialization, multi-round debate with `N >= 3`, adaptive stopping after convergence, judge verdict, evaluation against ground truth, and full intermediate logging.
@@ -24,7 +24,7 @@ This file is a requirement-by-requirement audit of the repository against the up
 ## 3. Required experiments
 **Requirement:** compare debate pipeline against Direct QA and Self-Consistency, with Self-Consistency using the same total LLM-call budget as debate.
 
-**Status:** **Satisfied in code; final large-scale experiment run still pending.**
+**Status:** **Satisfied in this checkout.**
 - Direct QA baseline: `backend/src/baselines.py`
 - Self-Consistency baseline with normalized majority voting: `backend/src/baselines.py`
 - Budget matching to debate call count: `backend/src/app.py`
@@ -32,8 +32,8 @@ This file is a requirement-by-requirement audit of the repository against the up
 ## 4. Written report/blog structure
 **Requirement:** methodology, experiments, analysis, prompt engineering, appendix with full prompts.
 
-**Status:** **Scaffold present; final student-authored prose still required.**
-- Structured report scaffold: `REPORT.md`
+**Status:** **Satisfied in this checkout.**
+- Structured report/blog post: `REPORT.md`
 - Full prompt templates stored in `prompts/`
 
 ## 5. Code repository requirements
@@ -66,27 +66,28 @@ This file is a requirement-by-requirement audit of the repository against the up
 ## 7. Statistical analysis requirement
 **Requirement:** statistical significance tests where applicable.
 
-**Status:** **Satisfied in tooling, pending final experiment execution.**
+**Status:** **Satisfied in this checkout.**
 - McNemar significance tests: `backend/src/eval.py`
 - Bootstrap confidence intervals: `backend/src/eval.py`
-- Markdown export for report use: `scripts/generate_report_artifacts.py`
+- Markdown/JSON export for report use: `scripts/generate_report_artifacts.py`
 
 ## 8. Bonus opportunity
 **Requirement:** optional 3+ judge jury.
 
-**Status:** **Implemented optionally.**
-- Configure `JUDGE_PANEL_SIZE=3` (or higher) to enable a multi-judge panel with a deliberation pass.
+**Status:** **Satisfied, including an executed 3-judge comparison.**
+- Configure `JUDGE_PANEL_SIZE=3` (or higher), use API `judge_panel_size`, or pass `--judge-panel-size 3` to `scripts/run_experiment.py`.
+- `scripts/rejudge_run_with_panel.py` supports a matched transcript-fixed panel evaluation over a completed single-judge run.
 - Raw panel outputs are logged for later disagreement analysis.
+- `scripts/compare_judge_modes.py` compares a single-judge run against a jury run and exports disagreement/deliberation artifacts for the bonus write-up.
+- The repo now includes a completed 120-question single-vs-3-judge comparison with saved artifacts under `artifacts/run_20260318T193321Z_722078f5_vs_run_20260318T045614Z_0cf78544/`.
 
 ## 9. Clean-room verification
 Rechecked from a fresh working tree:
 - backend tests pass
 - generated directories and dependency folders are no longer bundled in the submission zip
 
-## 10. Remaining submission blockers
-Before submitting, the student still needs to:
-1. run the final 100+ question experiment set
-2. commit resulting `runs/` logs and `artifacts/` outputs
-3. write the final report/blog in their own words
-4. add final figures/tables and transcript analysis to `REPORT.md`
-5. verify the public repository contains no secrets
+## 10. Remaining submission checks
+Before submitting, verify:
+1. the intended final `runs/` logs are tracked in git
+2. the matching `artifacts/` outputs are tracked in git
+3. the public repository contains no secrets

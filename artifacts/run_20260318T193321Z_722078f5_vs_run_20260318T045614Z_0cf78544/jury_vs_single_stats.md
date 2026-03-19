@@ -1,0 +1,5 @@
+- Number of shared questions: **120**
+- McNemar p-value (Deliberated Jury vs Single Judge): **1.0000**
+- Bootstrap accuracy difference, Deliberated Jury - Single Judge: **0.000** (95% CI: **[0.000, 0.000]**)
+- Jury beats single on **0** items.
+- Single beats jury on **0** items.

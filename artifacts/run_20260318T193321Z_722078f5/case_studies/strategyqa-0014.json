@@ -1,0 +1,252 @@
+{
+  "item": {
+    "id": "strategyqa-0014",
+    "question": "Is electricity necessary to balance an account in Microsoft Excel?",
+    "context": "",
+    "ground_truth": "yes"
+  },
+  "consensus": true,
+  "initial_a": {
+    "answer": "no",
+    "rationale": "Electricity is not a requirement for balancing an account in Microsoft Excel. Excel is a software application that can function offline and can perform calculations and data management without an active power supply. The operations of balancing an account\u2014such as summing figures or applying formulas\u2014can be done as long as the software is running, regardless of the electricity source. Thus, electricity is not necessary for this specific task.",
+    "citations": []
+  },
+  "initial_b": {
+    "answer": "no",
+    "rationale": "Electricity is not a requisite for balancing an account in Microsoft Excel; the software functions independently of electrical supply. Balancing can be done manually or using Excel's built-in formulas, regardless of whether the computer is powered on or off at a given time. Therefore, while electricity enables the operation of the software, it is not necessary for the conceptual act of balancing an account within the application.",
+    "citations": []
+  },
+  "debate_rounds": [],
+  "judge": {
+    "verdict_answer": "no",
+    "confidence_1_to_5": 5,
+    "analysis": "Both debaters effectively argued that electricity is not necessary for balancing an account in Excel. Debater A's emphasis on Excel's offline capabilities provided a clearer rationale, while Debater B's argument about manual balancing was valid but less precise.",
+    "debater_a_strongest": "Excel can function offline and perform calculations without an active power supply.",
+    "debater_a_weakest": "Did not address the role of electricity in enabling software operation explicitly.",
+    "debater_b_strongest": "Balancing can be done manually or using Excel's built-in formulas, regardless of power.",
+    "debater_b_weakest": "The argument about the software functioning independently of electrical supply was less clear.",
+    "reasoning": "Both debaters concluded that electricity is not necessary for balancing accounts in Excel, but Debater A's argument was more straightforward and effectively communicated the software's capabilities, leading to a decisive conclusion that the answer is 'no'."
+  },
+  "judge_panel": [
+    {
+      "verdict_answer": "no",
+      "confidence_1_to_5": 5,
+      "analysis": "Both debaters argue that electricity is not necessary for balancing an account in Excel, but Debater A provides a clearer rationale by emphasizing that Excel can function offline. Debater B's argument is similar but less precise in explaining the independence of the software from electrical supply. Overall, Debater A's argument is slightly more persuasive due to its clarity.",
+      "debater_a_strongest": "Excel can function offline and perform calculations without an active power supply.",
+      "debater_a_weakest": "Does not address potential scenarios where electricity might be needed for other tasks.",
+      "debater_b_strongest": "Balancing can be done manually or using Excel's built-in formulas, regardless of power.",
+      "debater_b_weakest": "Less clarity in explaining the independence of the software from electrical supply.",
+      "reasoning": "Both debaters agree that electricity is not required for the act of balancing an account in Excel, but Debater A's argument is more straightforward and effectively communicates the point, leading to the conclusion that electricity is indeed not necessary."
+    },
+    {
+      "verdict_answer": "no",
+      "confidence_1_to_5": 5,
+      "analysis": "Both debaters effectively argued that electricity is not necessary for balancing an account in Excel. Debater A emphasized that Excel can function offline, while Debater B reinforced that balancing can be done manually or using built-in formulas. Both arguments are valid, but Debater A's explanation of the software's offline capabilities was slightly clearer.",
+      "debater_a_strongest": "Excel can function offline and perform calculations without an active power supply.",
+      "debater_a_weakest": "Did not address the role of electricity in enabling software operation explicitly.",
+      "debater_b_strongest": "Balancing can be done manually or using Excel's built-in formulas, regardless of power.",
+      "debater_b_weakest": "The argument about the software functioning independently of electrical supply was less clear.",
+      "reasoning": "Both debaters concluded that electricity is not necessary for balancing accounts in Excel, but Debater A provided a more straightforward explanation of how Excel operates offline, leading to a stronger overall argument."
+    },
+    {
+      "verdict_answer": "no",
+      "confidence_1_to_5": 5,
+      "analysis": "Both debaters presented similar arguments, asserting that electricity is not necessary for balancing an account in Excel. Debater A emphasized that Excel can function offline, while Debater B reiterated that balancing can occur manually or through formulas. However, Debater A's explanation was slightly clearer in articulating the independence of the software from electricity, making their argument more persuasive.",
+      "debater_a_strongest": "Excel can function offline and perform calculations without an active power supply.",
+      "debater_a_weakest": "Did not provide examples of manual balancing methods.",
+      "debater_b_strongest": "Balancing can be done manually or using Excel's built-in formulas.",
+      "debater_b_weakest": "Lacked clarity on how the software's operation relates to the need for electricity.",
+      "reasoning": "Both debaters agreed on the premise that electricity is not necessary for balancing accounts in Excel. However, Debater A's argument was more straightforward and effectively communicated the software's capabilities, leading to a decisive conclusion that the answer is 'no'."
+    }
+  ],
+  "judge_panel_summary": {
+    "panel_size": 3,
+    "panel_answers": [
+      "no",
+      "no",
+      "no"
+    ],
+    "vote_counts": {
+      "no": 3
+    },
+    "majority_answer": "no",
+    "majority_count": 3,
+    "minority_count": 0,
+    "unique_answers": 1,
+    "unanimous": true,
+    "disagreement": false,
+    "vote_margin": 3,
+    "confidence_mean": 5.0,
+    "confidence_min": 5,
+    "confidence_max": 5,
+    "deliberation_used": true,
+    "final_answer": "no",
+    "final_agrees_with_majority": true,
+    "deliberation_changed_majority": false
+  },
+  "baselines": {
+    "direct": {
+      "answer": "no",
+      "rationale": "Electricity is not necessary to balance an account in Microsoft Excel; the software can perform calculations without a power source if it is already running. However, electricity is required to power the device running Excel initially.",
+      "citations": []
+    },
+    "self_consistency_samples": [
+      {
+        "answer": "no",
+        "rationale": "Electricity is not required to use Microsoft Excel or to balance an account within it; the software operates on a computer which may or may not be powered. Balancing accounts can be done manually without the need for electricity.",
+        "citations": []
+      },
+      {
+        "answer": "no",
+        "rationale": "Electricity is not necessary for balancing an account in Microsoft Excel; the program can perform calculations and balance accounts as long as it is running. However, if the device is off or there is no electricity, the program would not function.",
+        "citations": []
+      },
+      {
+        "answer": "no",
+        "rationale": "Electricity is not required to balance an account in Microsoft Excel; the software can perform calculations and balance accounts without needing a power source if already opened. However, it does require electricity to run initially.",
+        "citations": []
+      }
+    ],
+    "self_consistency_vote": "no"
+  },
+  "correct_debate": false,
+  "correct_judge_panel_majority": false,
+  "correct_direct": false,
+  "correct_sc": false,
+  "meta": {
+    "llm_call_budget": 3,
+    "rounds_executed": 0,
+    "stop_reason": "initial_consensus",
+    "judge_panel_size": 3,
+    "judge_panel_summary": {
+      "panel_size": 3,
+      "panel_answers": [
+        "no",
+        "no",
+        "no"
+      ],
+      "vote_counts": {
+        "no": 3
+      },
+      "majority_answer": "no",
+      "majority_count": 3,
+      "minority_count": 0,
+      "unique_answers": 1,
+      "unanimous": true,
+      "disagreement": false,
+      "vote_margin": 3,
+      "confidence_mean": 5.0,
+      "confidence_min": 5,
+      "confidence_max": 5,
+      "deliberation_used": true,
+      "final_answer": "no",
+      "final_agrees_with_majority": true,
+      "deliberation_changed_majority": false
+    },
+    "experiment_config": {
+      "provider": "openai",
+      "api": "responses",
+      "models": {
+        "debater": "gpt-4o-mini",
+        "judge": "gpt-4o-mini"
+      },
+      "temperatures": {
+        "debater": 0.7,
+        "judge": 0.2,
+        "baseline": 0.2
+      },
+      "protocol": {
+        "debate_min_rounds": 3,
+        "debate_max_rounds_requested": 6,
+        "debate_max_rounds_effective": 6,
+        "debate_convergence_rounds": 2,
+        "judge_panel_size": 3
+      },
+      "limits": {
+        "max_output_tokens": 600
+      },
+      "baselines": {
+        "default_self_consistency_samples": 9
+      },
+      "paths": {
+        "prompts_dir": "/Users/brian/Downloads/llm-debate/prompts",
+        "runs_dir": "/Users/brian/Downloads/llm-debate/runs"
+      },
+      "prompt_templates": {
+        "debater_a.txt": {
+          "sha256": "ebf5a51edd98d41881bb337b747350d9fc72e83860aeca475ed5a31872c7263e",
+          "placeholders": [
+            "CONTEXT",
+            "JSON_SCHEMA",
+            "OPPONENT_NAME",
+            "QUESTION",
+            "ROLE_NAME",
+            "ROUND_INDEX",
+            "TRANSCRIPT",
+            "TURN_KIND"
+          ]
+        },
+        "debater_b.txt": {
+          "sha256": "6d017b51db2aacee520ef8fd08fb768387ef59982272c2ff42bdc60b69dfc1b6",
+          "placeholders": [
+            "CONTEXT",
+            "JSON_SCHEMA",
+            "OPPONENT_NAME",
+            "QUESTION",
+            "ROLE_NAME",
+            "ROUND_INDEX",
+            "TRANSCRIPT",
+            "TURN_KIND"
+          ]
+        },
+        "judge.txt": {
+          "sha256": "5ccde927573969e8bfb0142bd6e9e96e700af53e985a0143fcda2a44d7e55067",
+          "placeholders": [
+            "CONTEXT",
+            "JSON_SCHEMA",
+            "JUDGE_INDEX",
+            "QUESTION",
+            "TRANSCRIPT"
+          ]
+        },
+        "jury_deliberation.txt": {
+          "sha256": "a2c3a5eb1a2c68888e88527048706154fa608ba1d2516702e6d5c877c8991f6e",
+          "placeholders": [
+            "CONTEXT",
+            "JSON_SCHEMA",
+            "MAJORITY_ANSWER",
+            "PANEL_VERDICTS",
+            "QUESTION",
+            "TRANSCRIPT"
+          ]
+        },
+        "direct_qa.txt": {
+          "sha256": "c88ea382608da5c73e3092755f24a574ff9aad849084082ab59a2fadbdb8ff02",
+          "placeholders": [
+            "CONTEXT",
+            "JSON_SCHEMA",
+            "QUESTION"
+          ]
+        },
+        "self_consistency.txt": {
+          "sha256": "4b4fb285ceac5c5ce3eb1d8ad9c7607745811cc42c91eef978d83bcfd0b70461",
+          "placeholders": [
+            "CONTEXT",
+            "JSON_SCHEMA",
+            "QUESTION",
+            "SAMPLE_INDEX"
+          ]
+        }
+      },
+      "evaluation_mode": "rejudge_saved_transcript",
+      "source_run_id": "run_20260318T045614Z_0cf78544"
+    },
+    "dataset_path": "/Users/brian/Downloads/llm-debate/data/strategyqa_120.jsonl",
+    "rejudge_only": true,
+    "source_run_id": "run_20260318T045614Z_0cf78544",
+    "source_run_jsonl": "/Users/brian/Downloads/llm-debate/runs/run_20260318T045614Z_0cf78544.jsonl",
+    "rejudge_llm_calls": 4,
+    "case_study_label": "all_fail_initial_consensus",
+    "case_study_description": "All three methods fail and the debate ends before any rounds."
+  }
+}

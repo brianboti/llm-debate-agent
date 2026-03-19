@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -57,3 +58,21 @@ class PromptStore:
 
     def self_consistency(self) -> PromptTemplate:
         return self._template("self_consistency.txt")
+
+    def manifest(self) -> dict[str, dict[str, object]]:
+        filenames = [
+            "debater_a.txt",
+            "debater_b.txt",
+            "judge.txt",
+            "jury_deliberation.txt",
+            "direct_qa.txt",
+            "self_consistency.txt",
+        ]
+        manifest: dict[str, dict[str, object]] = {}
+        for filename in filenames:
+            template = self._template(filename)
+            manifest[filename] = {
+                "sha256": hashlib.sha256(template.raw_text.encode("utf-8")).hexdigest(),
+                "placeholders": sorted(template.placeholders()),
+            }
+        return manifest

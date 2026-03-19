@@ -47,7 +47,7 @@ The pipeline follows the required four-phase structure:
      - a final verdict,
      - a 1–5 confidence score,
      - strongest and weakest points for both sides,
-     - a short analytical summary of why one side was more persuasive.
+     - a concise step-by-step comparative analysis explaining why one side was more persuasive.
 
 4. **Evaluation**
    - The final verdict is compared against ground truth.
@@ -71,6 +71,17 @@ The backend is implemented with FastAPI and the frontend is a lightweight Vite/R
 ### 1.4 Configuration and reproducibility
 
 A major design goal was to keep all important hyperparameters in configuration rather than hardcoding them in the pipeline. The repository exposes model names, temperatures, token budgets, round limits, and judge panel size through configuration and environment variables.
+
+In this setup, the OpenAI Responses API exposes model aliases rather than a separate public date-pinned snapshot string, so I report the exact model aliases used at run time and save the full experiment configuration with the run summary.
+
+For the final run reported here, the runtime configuration was:
+
+- debater model: `gpt-4o-mini`
+- judge model: `gpt-4o-mini`
+- debater temperature: `0.7`
+- judge temperature: `0.2`
+- baseline temperature: `0.2`
+- max output tokens: `600`
 
 For the final single-judge experiment, the key protocol settings were:
 
@@ -107,12 +118,18 @@ Final run ID:
 
 `run_20260317T042415Z_b57eea67`
 
+Final run timestamp:
+
+`2026-03-17 04:24:15 UTC`
+
 Main run artifacts:
 
 - `runs/run_20260317T042415Z_b57eea67.jsonl`
 - `runs/run_20260317T042415Z_b57eea67.summary.json`
 - `artifacts/run_20260317T042415Z_b57eea67/metrics_table.md`
 - `artifacts/run_20260317T042415Z_b57eea67/stats_summary.md`
+- `artifacts/run_20260317T042415Z_b57eea67/failure_patterns.md`
+- `artifacts/run_20260317T042415Z_b57eea67/case_studies/index.md`
 - `artifacts/run_20260317T042415Z_b57eea67/accuracy_comparison.png`
 
 ### 2.2 Quantitative results
@@ -231,6 +248,8 @@ The final run produced several recurring patterns:
 - `all_fail`: **21**
 - `max_rounds_reached`: **12**
 
+These counts are generated directly from the saved run log and exported to `artifacts/run_20260317T042415Z_b57eea67/failure_patterns.md`.
+
 These counts help explain the final leaderboard.
 
 First, the fact that debate never beat both baselines is a strong signal that my current debate prompt design was not extracting enough benefit from adversarial interaction.
@@ -273,7 +292,7 @@ That change fixed two issues at once:
 - it made comparison against ground truth robust,
 - it prevented the judge from returning a side label instead of a verdict label.
 
-I also added stronger instructions that the explanation must go into `rationale` or `analysis`, not into the `answer` field itself.
+I also added stronger instructions that the explanation must go into `rationale` or `analysis`, not into the `answer` field itself, and that the reasoning should be presented as concise step-by-step argumentation rather than a free-form paragraph.
 
 ### 4.3 Real-world commonsense framing
 
@@ -287,6 +306,7 @@ The final prompts did several things well:
 
 - they made the pipeline stable under batch evaluation,
 - they produced parseable outputs,
+- they pushed both the debaters and judge toward concise step-by-step reasoning instead of one-line assertions,
 - they gave the judge richer structure than a bare answer,
 - they supported useful logging for post hoc transcript analysis.
 
@@ -307,9 +327,52 @@ If I continued this project, I would test three prompt changes first:
 2. make the judge score factual grounding and contradiction handling separately from persuasiveness;
 3. require each debater to explicitly consider one alternative interpretation of the question before committing to an answer.
 
-### 4.6 Optional next step: judge panel
+### 4.6 Bonus extension: judge panel workflow
 
-I also implemented optional support for a multi-judge panel, which could be used for the bonus extension. I did not include a full panel-vs-single-judge experiment in the final quantitative section, but the infrastructure is present in the repository and would be the next experiment I would run.
+I ran an additional bonus experiment on `2026-03-18` to compare a single judge against a 3-judge panel. To keep the comparison clean, I used the completed single-judge run as the base condition and re-evaluated the exact same 120 saved debate transcripts with a 3-judge panel plus deliberation. This isolates the effect of judge mode instead of mixing it with fresh debater randomness.
+
+Bonus run IDs:
+
+- single-judge source run: `run_20260318T045614Z_0cf78544`
+- 3-judge panel re-evaluation: `run_20260318T193321Z_722078f5`
+
+The panel re-evaluation and comparison workflow are reproducible with:
+
+```bash
+python scripts/rejudge_run_with_panel.py \
+  runs/<single_run_id>.jsonl \
+  --judge-panel-size 3
+
+python scripts/compare_judge_modes.py \
+  runs/<single_run_id>.jsonl \
+  runs/<panel_run_id>.jsonl \
+  --out-dir artifacts/<panel_run_id>_vs_<single_run_id>
+```
+
+The comparison artifacts are saved under:
+
+- `artifacts/run_20260318T193321Z_722078f5_vs_run_20260318T045614Z_0cf78544/`
+
+The key results were:
+
+| Judge Mode | Accuracy | Correct / Total |
+|---|---:|---:|
+| Single Judge | 0.742 | 89 / 120 |
+| Panel Majority | 0.750 | 90 / 120 |
+| Deliberated Jury | 0.742 | 89 / 120 |
+
+Panel behavior was also highly concentrated:
+
+- unanimous panel items: **119 / 120**
+- split panel items: **1 / 120**
+- deliberation changed the majority answer on **1** item
+- deliberation changed the outcome from correct to wrong on **1** item
+- McNemar p-value (Deliberated Jury vs Single Judge): **1.0000**
+- Bootstrap accuracy difference, Deliberated Jury − Single Judge: **0.000** with 95% CI **[0.000, 0.000]**
+
+The most important takeaway is that **majority voting helped slightly, but deliberation erased the gain**. The panel majority was correct on one additional item, but the deliberation step overrode that correct majority on `strategyqa-0003` and returned the final jury accuracy to exact parity with the single judge.
+
+This bonus result is still informative. It suggests that the current judge prompt already produces very low variance across judges, which limits the upside of a panel. Disagreement appeared on only one question, and even there the deliberation step moved the answer in the wrong direction. In other words, the bottleneck in this setup is probably not the number of judges alone. The more promising next improvement would be to redesign deliberation so it respects a correct majority more reliably, or to induce more genuinely independent judge reasoning before aggregation.
 
 ---
 
@@ -329,7 +392,7 @@ I do not view this as a failed project. Instead, I view it as a useful empirical
 
 ```bash
 cd backend
-pytest -q
+./.venv/bin/pytest -q
 ```
 
 ### Run a pilot experiment
@@ -339,16 +402,43 @@ cd ..
 python scripts/run_experiment.py data/strategyqa_120.jsonl --limit 10
 ```
 
-### Run the final experiment
+### Run the final single-judge experiment
 
 ```bash
-python scripts/run_experiment.py data/strategyqa_120.jsonl | tee final_run_console.txt
+python scripts/run_experiment.py data/strategyqa_120.jsonl --judge-panel-size 1
 ```
 
-### Generate report artifacts
+### Generate single-run artifacts
 
 ```bash
-python scripts/generate_report_artifacts.py runs/run_20260317T042415Z_b57eea67.jsonl --out-dir artifacts/run_20260317T042415Z_b57eea67
+python scripts/generate_report_artifacts.py runs/<single_run_id>.jsonl --out-dir artifacts/<single_run_id>
+```
+
+### Re-evaluate saved transcripts with a 3-judge panel
+
+```bash
+python scripts/rejudge_run_with_panel.py runs/<single_run_id>.jsonl --judge-panel-size 3
+```
+
+### Generate panel-run artifacts
+
+```bash
+python scripts/generate_report_artifacts.py runs/<panel_run_id>.jsonl --out-dir artifacts/<panel_run_id>
+```
+
+### Compare single judge vs jury
+
+```bash
+python scripts/compare_judge_modes.py \
+  runs/<single_run_id>.jsonl \
+  runs/<panel_run_id>.jsonl \
+  --out-dir artifacts/<panel_run_id>_vs_<single_run_id>
+```
+
+### Backfill metadata into an older run log if needed
+
+```bash
+python scripts/backfill_run_metadata.py runs/<older_run_id>.jsonl --in-place
 ```
 
 ---

@@ -1,0 +1,41 @@
+{
+  "run_id": "run_20260317T042415Z_b57eea67",
+  "n_items": 120,
+  "accuracy_debate": 0.7333333333333333,
+  "accuracy_direct": 0.8083333333333333,
+  "accuracy_sc": 0.775,
+  "mcnemar_debate_vs_direct_p": 0.01171875,
+  "mcnemar_debate_vs_sc_p": 0.1796875,
+  "dataset_path": "/Users/brian/Downloads/llm-debate/data/strategyqa_120.jsonl",
+  "experiment_config": {
+    "provider": "openai",
+    "api": "responses",
+    "models": {
+      "debater": "gpt-4o-mini",
+      "judge": "gpt-4o-mini"
+    },
+    "temperatures": {
+      "debater": 0.7,
+      "judge": 0.2,
+      "baseline": 0.2
+    },
+    "protocol": {
+      "debate_min_rounds": 3,
+      "debate_max_rounds_requested": 6,
+      "debate_max_rounds_effective": 6,
+      "debate_convergence_rounds": 2,
+      "judge_panel_size": 1
+    },
+    "limits": {
+      "max_output_tokens": 600
+    },
+    "baselines": {
+      "default_self_consistency_samples": 9
+    },
+    "paths": {
+      "prompts_dir": "/Users/brian/Downloads/llm-debate/prompts",
+      "runs_dir": "/Users/brian/Downloads/llm-debate/runs"
+    },
+    "prompt_templates": {}
+  }
+}

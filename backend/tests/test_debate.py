@@ -76,3 +76,30 @@ def test_run_debate_enforces_minimum_three_rounds_before_early_stop() -> None:
     assert len(result.rounds) == 3
     assert result.llm_call_count == 9
     assert result.stop_reason.startswith("adaptive_convergence")
+
+
+def test_run_debate_supports_multi_judge_panel_summary() -> None:
+    payloads = [
+        make_answer("yes", "a0"),
+        make_answer("yes", "b0"),
+        make_judge("yes"),
+        make_judge("no"),
+        make_judge("yes"),
+        make_judge("yes"),
+    ]
+    client = FakeClient(payloads)
+    result = run_debate(
+        client=client,
+        prompts=FakePrompts(),
+        item=Item(id="1", question="Q", ground_truth="yes"),
+        judge_panel_size_override=3,
+    )
+    assert result.consensus is True
+    assert result.llm_call_count == 6
+    assert len(result.judge_panel) == 3
+    assert result.judge_panel_summary.panel_size == 3
+    assert result.judge_panel_summary.majority_answer == "yes"
+    assert result.judge_panel_summary.vote_counts == {"no": 1, "yes": 2}
+    assert result.judge_panel_summary.disagreement is True
+    assert result.judge_panel_summary.deliberation_used is True
+    assert result.judge_panel_summary.deliberation_changed_majority is False

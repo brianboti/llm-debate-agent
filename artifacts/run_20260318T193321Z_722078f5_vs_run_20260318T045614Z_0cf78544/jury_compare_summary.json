@@ -1,0 +1,39 @@
+{
+  "n_items": 120,
+  "single_accuracy": 0.7416666666666667,
+  "panel_majority_accuracy": 0.75,
+  "deliberated_jury_accuracy": 0.7416666666666667,
+  "jury_vs_single_mcnemar_p": 1.0,
+  "jury_vs_single_bootstrap_diff_mean": 0.0,
+  "jury_vs_single_bootstrap_diff_ci": [
+    0.0,
+    0.0
+  ],
+  "jury_beats_single": 0,
+  "single_beats_jury": 0,
+  "panel_unanimous_items": 119,
+  "panel_split_items": 1,
+  "deliberation_changed_majority_items": 1,
+  "deliberation_changed_to_correct": 0,
+  "deliberation_changed_to_wrong": 1,
+  "difficulty_summary": {
+    "easy": {
+      "n_items": 91,
+      "disagreement_rate": 0.01098901098901099,
+      "jury_accuracy": 0.9120879120879121,
+      "single_accuracy": 0.9120879120879121
+    },
+    "medium": {
+      "n_items": 4,
+      "disagreement_rate": 0.0,
+      "jury_accuracy": 1.0,
+      "single_accuracy": 1.0
+    },
+    "hard": {
+      "n_items": 25,
+      "disagreement_rate": 0.0,
+      "jury_accuracy": 0.08,
+      "single_accuracy": 0.08
+    }
+  }
+}

@@ -25,7 +25,11 @@ class OpenAIClient:
         except ModuleNotFoundError as exc:  # pragma: no cover - environment-specific
             raise RuntimeError("The openai package is not installed. Run `pip install -e .[dev]` in backend/.") from exc
 
-        self._client = OpenAI(api_key=settings.openai_api_key)
+        self._client = OpenAI(
+            api_key=settings.openai_api_key,
+            timeout=settings.openai_timeout_seconds,
+            max_retries=0,
+        )
 
     @staticmethod
     def _output_text(resp: "Response") -> str:

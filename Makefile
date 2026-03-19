@@ -1,7 +1,7 @@
 .PHONY: test fmt build-web run-batch
 
 test:
-	cd backend && pytest -q
+	cd backend && ./.venv/bin/pytest -q
 
 fmt:
 	cd backend && ruff check --fix src tests

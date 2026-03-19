@@ -7,7 +7,7 @@ from .debater_agent import DebaterAgent, TranscriptTurn
 from .judge_agent import JudgeAgent
 from .openai_client import OpenAIClient
 from .prompts import PromptStore
-from .types import DebateRound, Item, JudgeVerdict, ModelAnswer, normalize_answer
+from .types import DebateRound, Item, JudgePanelSummary, JudgeVerdict, ModelAnswer, normalize_answer
 
 
 @dataclass(frozen=True)
@@ -18,6 +18,7 @@ class DebateExecution:
     rounds: list[DebateRound]
     judge: JudgeVerdict
     judge_panel: list[JudgeVerdict]
+    judge_panel_summary: JudgePanelSummary
     stop_reason: str
     judge_llm_calls: int
 
@@ -32,6 +33,7 @@ def run_debate(
     prompts: PromptStore,
     item: Item,
     rounds_max_override: int | None = None,
+    judge_panel_size_override: int | None = None,
 ) -> DebateExecution:
     requested_rounds = rounds_max_override or settings.debate_max_rounds
     rounds_max = max(settings.debate_min_rounds, requested_rounds)
@@ -51,7 +53,11 @@ def run_debate(
     transcript.append(TranscriptTurn(speaker="Debater B (initial)", round_index=0, payload=b0.model_dump()))
 
     if normalize_answer(a0.answer) == normalize_answer(b0.answer):
-        judge_execution = judge_agent.evaluate(item=item, transcript=transcript)
+        judge_execution = judge_agent.evaluate(
+            item=item,
+            transcript=transcript,
+            panel_size_override=judge_panel_size_override,
+        )
         return DebateExecution(
             consensus=True,
             initial_a=a0,
@@ -59,6 +65,7 @@ def run_debate(
             rounds=[],
             judge=judge_execution.final_verdict,
             judge_panel=judge_execution.panel,
+            judge_panel_summary=judge_execution.panel_summary,
             stop_reason="initial_consensus",
             judge_llm_calls=judge_execution.llm_call_count,
         )
@@ -85,7 +92,11 @@ def run_debate(
             stop_reason = f"adaptive_convergence_after_{converge_k}_agreements"
             break
 
-    judge_execution = judge_agent.evaluate(item=item, transcript=transcript)
+    judge_execution = judge_agent.evaluate(
+        item=item,
+        transcript=transcript,
+        panel_size_override=judge_panel_size_override,
+    )
     return DebateExecution(
         consensus=False,
         initial_a=a0,
@@ -93,6 +104,7 @@ def run_debate(
         rounds=rounds,
         judge=judge_execution.final_verdict,
         judge_panel=judge_execution.panel,
+        judge_panel_summary=judge_execution.panel_summary,
         stop_reason=stop_reason,
         judge_llm_calls=judge_execution.llm_call_count,
     )

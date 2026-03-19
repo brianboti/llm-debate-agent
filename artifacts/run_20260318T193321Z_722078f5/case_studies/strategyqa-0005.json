@@ -1,0 +1,322 @@
+{
+  "item": {
+    "id": "strategyqa-0005",
+    "question": "Would someone in Mumbai refer to Solanum melongena as an eggplant?",
+    "context": "",
+    "ground_truth": "no"
+  },
+  "consensus": false,
+  "initial_a": {
+    "answer": "yes",
+    "rationale": "In Mumbai, English is widely spoken, and 'eggplant' is a common term used in various culinary contexts. While the local language may have its own name for Solanum melongena, the English name 'eggplant' is recognized and used by many residents, particularly in urban areas where English influences are strong.",
+    "citations": []
+  },
+  "initial_b": {
+    "answer": "no",
+    "rationale": "In Mumbai, the local term for Solanum melongena is typically 'baingan' in Hindi or Marathi. While 'eggplant' is understood due to English influence, it is not the primary term used in everyday conversation. Therefore, it is unlikely that someone in Mumbai would refer to it as 'eggplant.'",
+    "citations": []
+  },
+  "debate_rounds": [
+    {
+      "round_index": 1,
+      "debater_a": {
+        "answer": "no",
+        "rationale": "While 'eggplant' is recognized in Mumbai due to English influence, the predominant term used in everyday conversation remains 'baingan' in local languages like Hindi and Marathi. This suggests that most residents would not refer to it as 'eggplant' in common usage.",
+        "citations": []
+      },
+      "debater_b": {
+        "answer": "no",
+        "rationale": "Despite the recognition of 'eggplant' in Mumbai due to English influence, the primary term used in everyday conversation remains 'baingan' in local languages such as Hindi and Marathi. This indicates that most residents are more likely to refer to it by its local name rather than the English term, especially in informal settings.",
+        "citations": []
+      }
+    },
+    {
+      "round_index": 2,
+      "debater_a": {
+        "answer": "no",
+        "rationale": "In Mumbai, while English is widely spoken, the local term 'baingan' in Hindi or Marathi is the predominant name used for Solanum melongena. This suggests that in everyday conversations, residents are more likely to refer to it as 'baingan' rather than 'eggplant,' which is less commonly used in informal settings.",
+        "citations": []
+      },
+      "debater_b": {
+        "answer": "no",
+        "rationale": "Despite the prevalence of English in Mumbai, the local term 'baingan' remains the most commonly used name for Solanum melongena in everyday conversation. While 'eggplant' may be recognized, it is not the primary term used by residents, particularly in informal settings. This indicates that most people are more likely to use the local name rather than the English equivalent.",
+        "citations": []
+      }
+    },
+    {
+      "round_index": 3,
+      "debater_a": {
+        "answer": "no",
+        "rationale": "While English is spoken in Mumbai, the local term 'baingan' in Hindi or Marathi is the primary name used for Solanum melongena in everyday conversation. Most residents are more likely to refer to it as 'baingan,' particularly in informal settings, rather than using the English term 'eggplant.'",
+        "citations": []
+      },
+      "debater_b": {
+        "answer": "no",
+        "rationale": "The consensus in the debate indicates that while 'eggplant' is recognized in Mumbai, the predominant term used by residents in everyday conversation is 'baingan' in Hindi or Marathi. This suggests that the local name is favored, particularly in informal contexts, making it unlikely for someone in Mumbai to refer to Solanum melongena as 'eggplant.'",
+        "citations": []
+      }
+    }
+  ],
+  "judge": {
+    "verdict_answer": "no",
+    "confidence_1_to_5": 5,
+    "analysis": "Both debaters consistently argued that 'baingan' is the primary term used in Mumbai for Solanum melongena. Debater A acknowledged the recognition of 'eggplant' but ultimately conceded that 'baingan' is more commonly used. Debater B maintained a strong position throughout, emphasizing the everyday usage of 'baingan' in informal settings, making their argument more persuasive.",
+    "debater_a_strongest": "Acknowledged the recognition of 'eggplant' due to English influence in Mumbai.",
+    "debater_a_weakest": "Initially supported the use of 'eggplant' but failed to provide strong evidence for its common usage.",
+    "debater_b_strongest": "Emphasized that 'baingan' is the predominant term used in everyday conversation.",
+    "debater_b_weakest": "Did not address the potential recognition of 'eggplant' in formal contexts.",
+    "reasoning": "The debate established that while 'eggplant' may be recognized, the local term 'baingan' is predominantly used in Mumbai, leading to the conclusion that it is unlikely for someone to refer to Solanum melongena as 'eggplant.'"
+  },
+  "judge_panel": [
+    {
+      "verdict_answer": "no",
+      "confidence_1_to_5": 5,
+      "analysis": "Both debaters consistently argued that the local term 'baingan' is more commonly used than 'eggplant' in Mumbai. Debater A initially suggested that 'eggplant' is recognized but later conceded that 'baingan' is the primary term. Debater B maintained that 'baingan' is the term most residents would use, which aligns with the cultural context. Overall, Debater B's arguments were more consistent and persuasive.",
+      "debater_a_strongest": "Acknowledged that while 'eggplant' is recognized, 'baingan' is the primary term used.",
+      "debater_a_weakest": "Initially argued for 'yes', which was inconsistent with later points.",
+      "debater_b_strongest": "Emphasized that 'baingan' is the predominant term in everyday conversation.",
+      "debater_b_weakest": "Did not provide specific examples of usage in informal settings.",
+      "reasoning": "The consensus from both debaters indicates that while 'eggplant' is understood, 'baingan' is the term most commonly used in Mumbai. This leads to the conclusion that it is unlikely for someone in Mumbai to refer to Solanum melongena as 'eggplant.'"
+    },
+    {
+      "verdict_answer": "no",
+      "confidence_1_to_5": 5,
+      "analysis": "Both debaters argued that 'baingan' is the primary term used in Mumbai for Solanum melongena. Debater A initially suggested that 'eggplant' is recognized but ultimately conceded that 'baingan' is more commonly used. Debater B consistently maintained that 'baingan' is the term most residents use in everyday conversation, making their argument stronger and more consistent throughout the debate.",
+      "debater_a_strongest": "Acknowledged the influence of English but ultimately agreed that 'baingan' is more commonly used.",
+      "debater_a_weakest": "Initially supported the use of 'eggplant' but failed to provide strong evidence for its common usage.",
+      "debater_b_strongest": "Consistently argued that 'baingan' is the predominant term used in everyday conversation.",
+      "debater_b_weakest": "Did not address the potential recognition of 'eggplant' in formal contexts.",
+      "reasoning": "The debate clearly established that while 'eggplant' may be recognized, the local term 'baingan' is predominantly used in Mumbai, leading to the conclusion that it is unlikely for someone to refer to Solanum melongena as 'eggplant.'"
+    },
+    {
+      "verdict_answer": "no",
+      "confidence_1_to_5": 5,
+      "analysis": "Both debaters consistently argued that the local term 'baingan' is more commonly used than 'eggplant' in Mumbai. Debater B maintained a stronger position by emphasizing the everyday usage of 'baingan' in informal settings, while Debater A's arguments evolved but ultimately aligned with B's conclusion. Both debaters lacked significant new evidence in later rounds, but B's consistent focus on local vernacular strengthened their case.",
+      "debater_a_strongest": "Acknowledged the recognition of 'eggplant' due to English influence in Mumbai.",
+      "debater_a_weakest": "Failed to provide compelling reasons why 'eggplant' would be used over 'baingan' in everyday conversation.",
+      "debater_b_strongest": "Emphasized that 'baingan' is the primary term used in informal settings, making it unlikely for 'eggplant' to be used.",
+      "debater_b_weakest": "Did not introduce new evidence or examples to further strengthen the argument in later rounds.",
+      "reasoning": "The overwhelming consensus from both debaters was that 'baingan' is the term most commonly used in Mumbai, leading to the conclusion that it is unlikely someone would refer to Solanum melongena as 'eggplant'."
+    }
+  ],
+  "judge_panel_summary": {
+    "panel_size": 3,
+    "panel_answers": [
+      "no",
+      "no",
+      "no"
+    ],
+    "vote_counts": {
+      "no": 3
+    },
+    "majority_answer": "no",
+    "majority_count": 3,
+    "minority_count": 0,
+    "unique_answers": 1,
+    "unanimous": true,
+    "disagreement": false,
+    "vote_margin": 3,
+    "confidence_mean": 5.0,
+    "confidence_min": 5,
+    "confidence_max": 5,
+    "deliberation_used": true,
+    "final_answer": "no",
+    "final_agrees_with_majority": true,
+    "deliberation_changed_majority": false
+  },
+  "baselines": {
+    "direct": {
+      "answer": "no",
+      "rationale": "In Mumbai, the term commonly used for Solanum melongena is 'brinjal,' not 'eggplant.'",
+      "citations": []
+    },
+    "self_consistency_samples": [
+      {
+        "answer": "yes",
+        "rationale": "In Mumbai, English is commonly spoken, and the term 'eggplant' is widely recognized. While the local term 'brinjal' is also used, 'eggplant' is understood due to the influence of Western cuisine and language.",
+        "citations": []
+      },
+      {
+        "answer": "yes",
+        "rationale": "In Mumbai, the term 'eggplant' is commonly used, especially among English speakers, although the local word is 'baingan.' However, many people would understand 'eggplant' as it is a recognized term in culinary contexts.",
+        "citations": []
+      },
+      {
+        "answer": "yes",
+        "rationale": "In Mumbai, as in many parts of India, Solanum melongena is commonly referred to as 'brinjal'. However, due to globalization and the influence of Western cuisine, the term 'eggplant' is also recognized and may be used, especially in urban areas. Therefore, someone in Mumbai might refer to it as an eggplant, particularly in contexts involving international cuisine or among English speakers.",
+        "citations": []
+      },
+      {
+        "answer": "yes",
+        "rationale": "In Mumbai, which is located in India, the term 'eggplant' is commonly used alongside the local term 'brinjal' to refer to Solanum melongena. English is widely spoken, and the term 'eggplant' is recognized due to globalization and culinary influences.",
+        "citations": []
+      },
+      {
+        "answer": "yes",
+        "rationale": "In Mumbai, which is in India, the term 'eggplant' is commonly used in English, and it refers to Solanum melongena. The local name is also 'baingan' in Hindi, but English speakers would likely use 'eggplant.'",
+        "citations": []
+      },
+      {
+        "answer": "no",
+        "rationale": "In Mumbai, the term commonly used for Solanum melongena is 'brinjal' rather than 'eggplant'. While both terms refer to the same vegetable, 'brinjal' is more prevalent in Indian cuisine and culture.",
+        "citations": []
+      },
+      {
+        "answer": "yes",
+        "rationale": "In Mumbai, which is in India, the term 'eggplant' is commonly used, and it is also known as 'brinjal' in local contexts. However, 'eggplant' is recognized in English-speaking contexts, so it is likely someone would refer to Solanum melongena as an eggplant.",
+        "citations": []
+      },
+      {
+        "answer": "yes",
+        "rationale": "In Mumbai, as in many parts of India, the term 'brinjal' is commonly used for Solanum melongena. However, 'eggplant' is also widely recognized due to globalization and the influence of English. Therefore, it's plausible that someone in Mumbai could refer to it as 'eggplant.'",
+        "citations": []
+      },
+      {
+        "answer": "yes",
+        "rationale": "In Mumbai, as in much of India, Solanum melongena is commonly referred to as 'brinjal,' but the term 'eggplant' is widely recognized due to globalization and the influence of English in urban areas. Therefore, it's possible for someone in Mumbai to refer to it as eggplant, especially in English-speaking contexts.",
+        "citations": []
+      }
+    ],
+    "self_consistency_vote": "yes"
+  },
+  "correct_debate": true,
+  "correct_judge_panel_majority": true,
+  "correct_direct": true,
+  "correct_sc": false,
+  "meta": {
+    "llm_call_budget": 9,
+    "rounds_executed": 3,
+    "stop_reason": "adaptive_convergence_after_2_agreements",
+    "judge_panel_size": 3,
+    "judge_panel_summary": {
+      "panel_size": 3,
+      "panel_answers": [
+        "no",
+        "no",
+        "no"
+      ],
+      "vote_counts": {
+        "no": 3
+      },
+      "majority_answer": "no",
+      "majority_count": 3,
+      "minority_count": 0,
+      "unique_answers": 1,
+      "unanimous": true,
+      "disagreement": false,
+      "vote_margin": 3,
+      "confidence_mean": 5.0,
+      "confidence_min": 5,
+      "confidence_max": 5,
+      "deliberation_used": true,
+      "final_answer": "no",
+      "final_agrees_with_majority": true,
+      "deliberation_changed_majority": false
+    },
+    "experiment_config": {
+      "provider": "openai",
+      "api": "responses",
+      "models": {
+        "debater": "gpt-4o-mini",
+        "judge": "gpt-4o-mini"
+      },
+      "temperatures": {
+        "debater": 0.7,
+        "judge": 0.2,
+        "baseline": 0.2
+      },
+      "protocol": {
+        "debate_min_rounds": 3,
+        "debate_max_rounds_requested": 6,
+        "debate_max_rounds_effective": 6,
+        "debate_convergence_rounds": 2,
+        "judge_panel_size": 3
+      },
+      "limits": {
+        "max_output_tokens": 600
+      },
+      "baselines": {
+        "default_self_consistency_samples": 9
+      },
+      "paths": {
+        "prompts_dir": "/Users/brian/Downloads/llm-debate/prompts",
+        "runs_dir": "/Users/brian/Downloads/llm-debate/runs"
+      },
+      "prompt_templates": {
+        "debater_a.txt": {
+          "sha256": "ebf5a51edd98d41881bb337b747350d9fc72e83860aeca475ed5a31872c7263e",
+          "placeholders": [
+            "CONTEXT",
+            "JSON_SCHEMA",
+            "OPPONENT_NAME",
+            "QUESTION",
+            "ROLE_NAME",
+            "ROUND_INDEX",
+            "TRANSCRIPT",
+            "TURN_KIND"
+          ]
+        },
+        "debater_b.txt": {
+          "sha256": "6d017b51db2aacee520ef8fd08fb768387ef59982272c2ff42bdc60b69dfc1b6",
+          "placeholders": [
+            "CONTEXT",
+            "JSON_SCHEMA",
+            "OPPONENT_NAME",
+            "QUESTION",
+            "ROLE_NAME",
+            "ROUND_INDEX",
+            "TRANSCRIPT",
+            "TURN_KIND"
+          ]
+        },
+        "judge.txt": {
+          "sha256": "5ccde927573969e8bfb0142bd6e9e96e700af53e985a0143fcda2a44d7e55067",
+          "placeholders": [
+            "CONTEXT",
+            "JSON_SCHEMA",
+            "JUDGE_INDEX",
+            "QUESTION",
+            "TRANSCRIPT"
+          ]
+        },
+        "jury_deliberation.txt": {
+          "sha256": "a2c3a5eb1a2c68888e88527048706154fa608ba1d2516702e6d5c877c8991f6e",
+          "placeholders": [
+            "CONTEXT",
+            "JSON_SCHEMA",
+            "MAJORITY_ANSWER",
+            "PANEL_VERDICTS",
+            "QUESTION",
+            "TRANSCRIPT"
+          ]
+        },
+        "direct_qa.txt": {
+          "sha256": "c88ea382608da5c73e3092755f24a574ff9aad849084082ab59a2fadbdb8ff02",
+          "placeholders": [
+            "CONTEXT",
+            "JSON_SCHEMA",
+            "QUESTION"
+          ]
+        },
+        "self_consistency.txt": {
+          "sha256": "4b4fb285ceac5c5ce3eb1d8ad9c7607745811cc42c91eef978d83bcfd0b70461",
+          "placeholders": [
+            "CONTEXT",
+            "JSON_SCHEMA",
+            "QUESTION",
+            "SAMPLE_INDEX"
+          ]
+        }
+      },
+      "evaluation_mode": "rejudge_saved_transcript",
+      "source_run_id": "run_20260318T045614Z_0cf78544"
+    },
+    "dataset_path": "/Users/brian/Downloads/llm-debate/data/strategyqa_120.jsonl",
+    "rejudge_only": true,
+    "source_run_id": "run_20260318T045614Z_0cf78544",
+    "source_run_jsonl": "/Users/brian/Downloads/llm-debate/runs/run_20260318T045614Z_0cf78544.jsonl",
+    "rejudge_llm_calls": 4,
+    "case_study_label": "adaptive_convergence_example",
+    "case_study_description": "Debaters converge after multiple rounds instead of hitting the maximum budget."
+  }
+}

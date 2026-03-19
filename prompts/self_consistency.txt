@@ -11,6 +11,7 @@ Context:
 Instructions:
 - Try an independent reasoning path for this sample.
 - Use ordinary real-world commonsense unless the question explicitly asks about fictional or hypothetical rules.
+- Give concise step-by-step reasoning for this sample.
 - The `answer` field must be exactly `yes` or `no`.
 - Put all explanation in `rationale`, not in `answer`.
 - Use citations only for short evidence snippets or identifiers from the provided context.

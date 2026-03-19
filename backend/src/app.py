@@ -31,12 +31,15 @@ def _build_item_result(
     item: Item,
     dataset_path: Path | None = None,
     rounds_max_override: int | None = None,
+    judge_panel_size_override: int | None = None,
+    experiment_config: dict[str, object] | None = None,
 ) -> ItemResult:
     debate = run_debate(
         client=client,
         prompts=prompts,
         item=item,
         rounds_max_override=rounds_max_override,
+        judge_panel_size_override=judge_panel_size_override,
     )
     baselines = run_baselines(
         client=client,
@@ -51,6 +54,13 @@ def _build_item_result(
         "rounds_executed": len(debate.rounds),
         "stop_reason": debate.stop_reason,
         "judge_panel_size": len(debate.judge_panel),
+        "judge_panel_summary": debate.judge_panel_summary.model_dump(),
+        "experiment_config": experiment_config
+        or settings.experiment_snapshot(
+            rounds_max_override=rounds_max_override,
+            judge_panel_size_override=judge_panel_size_override,
+            prompt_manifest=prompts.manifest(),
+        ),
     }
     if dataset_path is not None:
         metadata["dataset_path"] = str(dataset_path)
@@ -63,8 +73,12 @@ def _build_item_result(
         debate_rounds=debate.rounds,
         judge=debate.judge,
         judge_panel=debate.judge_panel,
+        judge_panel_summary=debate.judge_panel_summary,
         baselines=baselines,
         correct_debate=normalize_answer(debate.judge.verdict_answer) == ground_truth,
+        correct_judge_panel_majority=normalize_answer(debate.judge_panel_summary.majority_answer) == ground_truth
+        if debate.judge_panel_summary.majority_answer
+        else None,
         correct_direct=normalize_answer(baselines.direct.answer) == ground_truth,
         correct_sc=normalize_answer(baselines.self_consistency_vote) == ground_truth,
         meta=metadata,
@@ -87,12 +101,19 @@ def health() -> dict[str, bool]:
 def run_one(req: RunRequest) -> RunResponse:
     client = OpenAIClient()
     prompts = PromptStore(settings.prompts_path())
+    experiment_config = settings.experiment_snapshot(
+        rounds_max_override=req.rounds_max,
+        judge_panel_size_override=req.judge_panel_size,
+        prompt_manifest=prompts.manifest(),
+    )
 
     result = _build_item_result(
         client=client,
         prompts=prompts,
         item=req.item,
         rounds_max_override=req.rounds_max,
+        judge_panel_size_override=req.judge_panel_size,
+        experiment_config=experiment_config,
     )
     run_id = new_run_id()
     _persist_run(run_id, [result])
@@ -107,6 +128,10 @@ def run_batch(req: BatchRequest) -> BatchResponse:
 
     client = OpenAIClient()
     prompts = PromptStore(settings.prompts_path())
+    experiment_config = settings.experiment_snapshot(
+        judge_panel_size_override=req.judge_panel_size,
+        prompt_manifest=prompts.manifest(),
+    )
 
     items = load_item_dataset(dataset_path, limit=req.limit)
     if not items:
@@ -118,6 +143,8 @@ def run_batch(req: BatchRequest) -> BatchResponse:
             prompts=prompts,
             item=item,
             dataset_path=dataset_path,
+            judge_panel_size_override=req.judge_panel_size,
+            experiment_config=experiment_config,
         )
         for item in items
     ]

@@ -1,0 +1,252 @@
+{
+  "item": {
+    "id": "strategyqa-0001",
+    "question": "Is Mixed martial arts totally original from Roman Colosseum games?",
+    "context": "",
+    "ground_truth": "no"
+  },
+  "consensus": true,
+  "initial_a": {
+    "answer": "no",
+    "rationale": "Mixed martial arts (MMA) is not totally original from Roman Colosseum games as it has evolved over centuries, incorporating techniques from various combat sports and disciplines. While the Colosseum featured brutal gladiatorial contests, modern MMA draws from a diverse range of martial arts, including but not limited to wrestling, judo, Brazilian jiu-jitsu, and boxing. Thus, MMA cannot be solely attributed to the Colosseum games.",
+    "citations": []
+  },
+  "initial_b": {
+    "answer": "no",
+    "rationale": "Mixed martial arts (MMA) has roots in various combat sports and martial arts traditions from around the world, not solely from the Roman Colosseum. The Colosseum games featured gladiatorial combat, which is distinct in purpose, rules, and context from modern MMA. MMA incorporates techniques from disciplines like boxing, wrestling, judo, and Brazilian jiu-jitsu, indicating a diverse lineage rather than a singular origin.",
+    "citations": []
+  },
+  "debate_rounds": [],
+  "judge": {
+    "verdict_answer": "no",
+    "confidence_1_to_5": 5,
+    "analysis": "Both debaters effectively argued that MMA is not solely derived from Roman Colosseum games. Debater A emphasized the evolution of MMA from various combat sports, while Debater B provided a clearer distinction between gladiatorial combat and modern MMA, making their argument slightly more persuasive.",
+    "debater_a_strongest": "MMA has evolved over centuries, incorporating techniques from various combat sports and disciplines.",
+    "debater_a_weakest": "Did not provide specific examples of the diverse martial arts that influenced MMA.",
+    "debater_b_strongest": "MMA incorporates techniques from disciplines like boxing, wrestling, judo, and Brazilian jiu-jitsu, indicating a diverse lineage.",
+    "debater_b_weakest": "Could have elaborated more on the differences in rules and context between MMA and Colosseum games.",
+    "reasoning": "Both debaters agree that MMA is not original to the Colosseum, but Debater B's argument was more comprehensive in detailing the diverse origins of MMA, leading to the conclusion that the statement is false."
+  },
+  "judge_panel": [
+    {
+      "verdict_answer": "no",
+      "confidence_1_to_5": 5,
+      "analysis": "Both debaters effectively argued that MMA is not solely derived from Roman Colosseum games. Debater A emphasized the evolution of MMA from various combat sports, while Debater B highlighted the distinct nature of gladiatorial combat compared to modern MMA. Both arguments were strong, but Debater B provided a clearer distinction between the two forms of combat, making their argument slightly more persuasive.",
+      "debater_a_strongest": "MMA has evolved over centuries, incorporating techniques from various combat sports and disciplines.",
+      "debater_a_weakest": "Did not provide specific examples of the diverse martial arts that influenced MMA.",
+      "debater_b_strongest": "MMA incorporates techniques from disciplines like boxing, wrestling, judo, and Brazilian jiu-jitsu, indicating a diverse lineage.",
+      "debater_b_weakest": "Could have elaborated more on the differences in rules and context between MMA and Colosseum games.",
+      "reasoning": "Both debaters agreed that MMA is not original to the Colosseum, but Debater B's argument was more comprehensive in detailing the diverse origins of MMA, leading to the conclusion that the statement is false."
+    },
+    {
+      "verdict_answer": "no",
+      "confidence_1_to_5": 5,
+      "analysis": "Both debaters effectively argue that MMA is not solely derived from Roman Colosseum games. Debater A emphasizes the evolution of MMA from various combat sports, while Debater B highlights the distinct differences in purpose and context between gladiatorial combat and modern MMA. Both arguments are strong, but Debater B's focus on the diverse lineage of MMA provides a more comprehensive understanding.",
+      "debater_a_strongest": "MMA has evolved over centuries, incorporating techniques from various combat sports and disciplines.",
+      "debater_a_weakest": "The argument lacks specific examples of how MMA has evolved beyond the Colosseum games.",
+      "debater_b_strongest": "MMA incorporates techniques from disciplines like boxing, wrestling, judo, and Brazilian jiu-jitsu, indicating a diverse lineage.",
+      "debater_b_weakest": "The argument could benefit from more historical context regarding the evolution of MMA.",
+      "reasoning": "Both debaters agree that MMA is not original to the Colosseum, but Debater B provides a clearer explanation of the diverse influences on MMA, making the case more persuasive."
+    },
+    {
+      "verdict_answer": "no",
+      "confidence_1_to_5": 5,
+      "analysis": "Both debaters effectively argue that MMA is not solely derived from Roman Colosseum games. Debater A emphasizes the evolution of MMA from various martial arts, while Debater B highlights the distinct nature of gladiatorial combat compared to modern MMA. Both arguments are strong, but Debater B's clarity in distinguishing the contexts gives them a slight edge.",
+      "debater_a_strongest": "MMA has evolved over centuries, incorporating techniques from various combat sports and disciplines.",
+      "debater_a_weakest": "The argument could benefit from more specific examples of the evolution process.",
+      "debater_b_strongest": "MMA incorporates techniques from disciplines like boxing, wrestling, judo, and Brazilian jiu-jitsu, indicating a diverse lineage.",
+      "debater_b_weakest": "The argument lacks a deeper exploration of the historical connections between MMA and ancient combat sports.",
+      "reasoning": "Both debaters agree that MMA is not original to the Colosseum, but Debater B provides a more comprehensive view of MMA's diverse origins, leading to a clear conclusion that the answer is 'no'."
+    }
+  ],
+  "judge_panel_summary": {
+    "panel_size": 3,
+    "panel_answers": [
+      "no",
+      "no",
+      "no"
+    ],
+    "vote_counts": {
+      "no": 3
+    },
+    "majority_answer": "no",
+    "majority_count": 3,
+    "minority_count": 0,
+    "unique_answers": 1,
+    "unanimous": true,
+    "disagreement": false,
+    "vote_margin": 3,
+    "confidence_mean": 5.0,
+    "confidence_min": 5,
+    "confidence_max": 5,
+    "deliberation_used": true,
+    "final_answer": "no",
+    "final_agrees_with_majority": true,
+    "deliberation_changed_majority": false
+  },
+  "baselines": {
+    "direct": {
+      "answer": "no",
+      "rationale": "Mixed martial arts (MMA) is not totally original from Roman Colosseum games; it has evolved from various combat sports and martial arts traditions over time, incorporating techniques from different cultures and eras.",
+      "citations": []
+    },
+    "self_consistency_samples": [
+      {
+        "answer": "no",
+        "rationale": "Mixed martial arts (MMA) is not totally original from Roman Colosseum games. While both involve combat sports, MMA has evolved from various disciplines and influences over time, incorporating techniques from boxing, wrestling, judo, and other martial arts, rather than being a direct continuation or replication of ancient Roman practices.",
+        "citations": []
+      },
+      {
+        "answer": "no",
+        "rationale": "Mixed martial arts (MMA) has evolved from various combat sports and martial arts traditions worldwide, and while the Roman Colosseum games featured combat sports, they do not form the sole origin of MMA. MMA incorporates elements from diverse martial arts, not just those from ancient Rome.",
+        "citations": []
+      },
+      {
+        "answer": "no",
+        "rationale": "Mixed martial arts (MMA) is a modern sport that incorporates various disciplines and styles, whereas the Roman Colosseum games featured gladiatorial combat and different forms of entertainment. MMA has evolved from various martial arts traditions and is not solely derived from the ancient Roman games.",
+        "citations": []
+      }
+    ],
+    "self_consistency_vote": "no"
+  },
+  "correct_debate": true,
+  "correct_judge_panel_majority": true,
+  "correct_direct": true,
+  "correct_sc": true,
+  "meta": {
+    "llm_call_budget": 3,
+    "rounds_executed": 0,
+    "stop_reason": "initial_consensus",
+    "judge_panel_size": 3,
+    "judge_panel_summary": {
+      "panel_size": 3,
+      "panel_answers": [
+        "no",
+        "no",
+        "no"
+      ],
+      "vote_counts": {
+        "no": 3
+      },
+      "majority_answer": "no",
+      "majority_count": 3,
+      "minority_count": 0,
+      "unique_answers": 1,
+      "unanimous": true,
+      "disagreement": false,
+      "vote_margin": 3,
+      "confidence_mean": 5.0,
+      "confidence_min": 5,
+      "confidence_max": 5,
+      "deliberation_used": true,
+      "final_answer": "no",
+      "final_agrees_with_majority": true,
+      "deliberation_changed_majority": false
+    },
+    "experiment_config": {
+      "provider": "openai",
+      "api": "responses",
+      "models": {
+        "debater": "gpt-4o-mini",
+        "judge": "gpt-4o-mini"
+      },
+      "temperatures": {
+        "debater": 0.7,
+        "judge": 0.2,
+        "baseline": 0.2
+      },
+      "protocol": {
+        "debate_min_rounds": 3,
+        "debate_max_rounds_requested": 6,
+        "debate_max_rounds_effective": 6,
+        "debate_convergence_rounds": 2,
+        "judge_panel_size": 3
+      },
+      "limits": {
+        "max_output_tokens": 600
+      },
+      "baselines": {
+        "default_self_consistency_samples": 9
+      },
+      "paths": {
+        "prompts_dir": "/Users/brian/Downloads/llm-debate/prompts",
+        "runs_dir": "/Users/brian/Downloads/llm-debate/runs"
+      },
+      "prompt_templates": {
+        "debater_a.txt": {
+          "sha256": "ebf5a51edd98d41881bb337b747350d9fc72e83860aeca475ed5a31872c7263e",
+          "placeholders": [
+            "CONTEXT",
+            "JSON_SCHEMA",
+            "OPPONENT_NAME",
+            "QUESTION",
+            "ROLE_NAME",
+            "ROUND_INDEX",
+            "TRANSCRIPT",
+            "TURN_KIND"
+          ]
+        },
+        "debater_b.txt": {
+          "sha256": "6d017b51db2aacee520ef8fd08fb768387ef59982272c2ff42bdc60b69dfc1b6",
+          "placeholders": [
+            "CONTEXT",
+            "JSON_SCHEMA",
+            "OPPONENT_NAME",
+            "QUESTION",
+            "ROLE_NAME",
+            "ROUND_INDEX",
+            "TRANSCRIPT",
+            "TURN_KIND"
+          ]
+        },
+        "judge.txt": {
+          "sha256": "5ccde927573969e8bfb0142bd6e9e96e700af53e985a0143fcda2a44d7e55067",
+          "placeholders": [
+            "CONTEXT",
+            "JSON_SCHEMA",
+            "JUDGE_INDEX",
+            "QUESTION",
+            "TRANSCRIPT"
+          ]
+        },
+        "jury_deliberation.txt": {
+          "sha256": "a2c3a5eb1a2c68888e88527048706154fa608ba1d2516702e6d5c877c8991f6e",
+          "placeholders": [
+            "CONTEXT",
+            "JSON_SCHEMA",
+            "MAJORITY_ANSWER",
+            "PANEL_VERDICTS",
+            "QUESTION",
+            "TRANSCRIPT"
+          ]
+        },
+        "direct_qa.txt": {
+          "sha256": "c88ea382608da5c73e3092755f24a574ff9aad849084082ab59a2fadbdb8ff02",
+          "placeholders": [
+            "CONTEXT",
+            "JSON_SCHEMA",
+            "QUESTION"
+          ]
+        },
+        "self_consistency.txt": {
+          "sha256": "4b4fb285ceac5c5ce3eb1d8ad9c7607745811cc42c91eef978d83bcfd0b70461",
+          "placeholders": [
+            "CONTEXT",
+            "JSON_SCHEMA",
+            "QUESTION",
+            "SAMPLE_INDEX"
+          ]
+        }
+      },
+      "evaluation_mode": "rejudge_saved_transcript",
+      "source_run_id": "run_20260318T045614Z_0cf78544"
+    },
+    "dataset_path": "/Users/brian/Downloads/llm-debate/data/strategyqa_120.jsonl",
+    "rejudge_only": true,
+    "source_run_id": "run_20260318T045614Z_0cf78544",
+    "source_run_jsonl": "/Users/brian/Downloads/llm-debate/runs/run_20260318T045614Z_0cf78544.jsonl",
+    "rejudge_llm_calls": 4,
+    "case_study_label": "all_correct_initial_consensus",
+    "case_study_description": "All methods are correct and the debate resolves immediately by consensus."
+  }
+}

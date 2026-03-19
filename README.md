@@ -7,8 +7,10 @@ FastAPI backend + React UI for a two-debater / one-judge (or optional jury) reas
 - `web/`: React UI for single-question runs with round-by-round debate display and judge verdict panel
 - `prompts/`: editable prompt templates with explicit variable placeholders
 - `scripts/run_experiment.py`: CLI for reproducible dataset runs
-- `scripts/generate_report_artifacts.py`: generates Markdown tables, statistical summaries, and a PNG chart from saved run logs
-- `REPORT.md`: a submission scaffold you can fill with your own experimental findings and transcript analysis
+- `scripts/rejudge_run_with_panel.py`: re-evaluates a saved run with a 3+ judge panel over the exact same transcripts
+- `scripts/generate_report_artifacts.py`: generates Markdown tables, statistical summaries, failure-pattern summaries, case-study exports, and a PNG chart from saved run logs
+- `scripts/compare_judge_modes.py`: compares a single-judge run against a 3+ judge jury run and exports bonus-analysis artifacts
+- `REPORT.md`: a structured report/blog post covering methodology, experiments, analysis, and prompt design
 - `COMPLIANCE_RECHECK.md`: a requirement-by-requirement audit against the assignment brief
 
 ## Assignment alignment
@@ -20,13 +22,14 @@ This repo is designed to satisfy the code-side deliverables from the assignment:
 - JSON logging for every `/run` and `/batch` execution
 - Direct QA and Self-Consistency baselines
 - optional multi-judge jury mode via `JUDGE_PANEL_SIZE`
+- bonus-ready jury comparison workflow for single-vs-panel analysis and disagreement diagnostics
 - report artifact generation from saved logs
 - functional web UI for single-question runs
 - paired statistical summaries for debate-vs-baseline comparisons
 
 ## Clean-room verification
 From a fresh unzip and fresh Python environment:
-- backend tests pass with `pytest -q`
+- backend tests pass with `./.venv/bin/pytest -q` after backend setup
 - the repo no longer bundles `node_modules/`, `.pytest_cache/`, or build outputs
 
 ## Backend setup
@@ -63,6 +66,7 @@ Open the UI at `http://localhost:5173`.
 - `TEMP_JUDGE`
 - `TEMP_BASELINE`
 - `MAX_OUTPUT_TOKENS`
+- `OPENAI_TIMEOUT_SECONDS`
 - `RUNS_DIR`
 - `PROMPTS_DIR`
 - `REPORT_ARTIFACTS_DIR`
@@ -73,6 +77,8 @@ Open the UI at `http://localhost:5173`.
 - `POST /batch`
 - `GET /logs/{run_id}`
 
+Both `POST /run` and `POST /batch` also accept an optional `judge_panel_size` override.
+
 ### Single-item request example
 ```bash
 curl -X POST http://localhost:8000/run   -H 'Content-Type: application/json'   -d '{
@@ -82,7 +88,8 @@ curl -X POST http://localhost:8000/run   -H 'Content-Type: application/json'   -
       "context": "",
       "ground_truth": "no"
     },
-    "rounds_max": 6
+    "rounds_max": 6,
+    "judge_panel_size": 3
   }'
 ```
 
@@ -90,7 +97,8 @@ curl -X POST http://localhost:8000/run   -H 'Content-Type: application/json'   -
 ```bash
 curl -X POST http://localhost:8000/batch   -H 'Content-Type: application/json'   -d '{
     "dataset_jsonl_path": "../data/sample_questions.jsonl",
-    "limit": 3
+    "limit": 3,
+    "judge_panel_size": 3
   }'
 ```
 
@@ -104,8 +112,12 @@ curl -X POST http://localhost:8000/batch   -H 'Content-Type: application/json'  
    ```bash
    python scripts/generate_report_artifacts.py runs/<run_id>.jsonl --out-dir artifacts/<run_id>
    ```
-4. Open `REPORT.md` and replace the TODO markers with your own findings, figures, and transcript analysis.
-5. Commit the code, prompts, report, `runs/<run_id>.jsonl`, `runs/<run_id>.summary.json`, and `artifacts/<run_id>/` to your public repository.
+4. If you need to enrich an older run with saved config metadata before regenerating artifacts:
+   ```bash
+   python scripts/backfill_run_metadata.py runs/<run_id>.jsonl --in-place
+   ```
+5. Review `REPORT.md` and update any findings, figures, or transcript analysis if you rerun experiments.
+6. Commit the code, prompts, report, `runs/<run_id>.jsonl`, `runs/<run_id>.summary.json`, and `artifacts/<run_id>/` to your public repository.
 
 ## Dataset format
 Each line in a dataset `.jsonl` file should look like this:
@@ -127,7 +139,7 @@ Each JSONL row stores:
 - the final judge verdict and raw judge panel outputs
 - baseline outputs
 - correctness flags
-- metadata including executed rounds, stop reason, judge panel size, and LLM call budget
+- metadata including executed rounds, stop reason, judge panel size, LLM call budget, and a full experiment config snapshot with prompt hashes
 
 ## Generate report artifacts
 After running a batch experiment:
@@ -138,13 +150,51 @@ python scripts/generate_report_artifacts.py runs/<run_id>.jsonl --out-dir artifa
 This writes:
 - `metrics_table.md`
 - `stats_summary.md`
+- `failure_patterns.md`
+- `failure_patterns.json`
 - `accuracy_comparison.png`
-- `summary.json`
+- `case_studies/index.md`
+- `case_studies/manifest.json`
+- selected `case_studies/*.json` transcript exports
+- `summary.json` including dataset path and experiment config snapshot
+
+## Bonus Jury Workflow
+Run a baseline single-judge experiment:
+```bash
+python scripts/run_experiment.py data/strategyqa_120.jsonl --judge-panel-size 1
+```
+
+Run a jury experiment with 3 judges:
+```bash
+python scripts/run_experiment.py data/strategyqa_120.jsonl --judge-panel-size 3
+```
+
+Or, if you want to isolate judge-mode effects over the exact same debate transcripts, re-evaluate a completed single-judge run with a 3-judge panel:
+```bash
+python scripts/rejudge_run_with_panel.py runs/<single_run_id>.jsonl --judge-panel-size 3
+```
+
+Compare the two runs:
+```bash
+python scripts/compare_judge_modes.py \
+  runs/<single_run_id>.jsonl \
+  runs/<panel_run_id>.jsonl \
+  --out-dir artifacts/<panel_run_id>_vs_<single_run_id>
+```
+
+This writes:
+- `jury_vs_single_accuracy.md`
+- `jury_vs_single_stats.md`
+- `jury_panel_behavior.md`
+- `jury_difficulty_correlation.md`
+- `deliberation_changed_cases.json`
+- `jury_compare_summary.json`
+- `judge_mode_accuracy.png`
 
 ## Quality checks
 From the repo root:
 ```bash
-cd backend && pytest -q
+cd backend && ./.venv/bin/pytest -q
 ```
 
 Recommended frontend check in a networked environment:
@@ -153,11 +203,11 @@ cd web && npm ci && npm run build
 ```
 
 ## Important submission note
-The assignment requires a real 100+ question experiment and a student-authored blog post. This repository is now much closer to rubric-complete on the implementation side, but you still need to:
-- run the final experiment set with your real API key
-- commit the resulting run logs and artifact files
-- write the final report/blog in your own words using the scaffold in `REPORT.md`
-- disclose any AI coding tools you used in the methodology section
+The assignment requires a real 100+ question experiment and a student-authored blog post. Before submitting, make sure your public repository includes:
+- the final `runs/<run_id>.jsonl` and `runs/<run_id>.summary.json` logs
+- the corresponding `artifacts/<run_id>/` outputs
+- your final `REPORT.md`
+- your AI-tool disclosure in the methodology section
 
 ## Security
 Do not commit real secrets. Keep API keys only in local `.env` files that are ignored by Git.

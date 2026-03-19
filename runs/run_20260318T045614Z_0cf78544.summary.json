@@ -1,0 +1,106 @@
+{
+  "run_id": "run_20260318T045614Z_0cf78544",
+  "n_items": 120,
+  "accuracy_debate": 0.7416666666666667,
+  "accuracy_direct": 0.775,
+  "accuracy_sc": 0.775,
+  "mcnemar_debate_vs_direct_p": 0.3876953125,
+  "mcnemar_debate_vs_sc_p": 0.3876953125,
+  "dataset_path": "/Users/brian/Downloads/llm-debate/data/strategyqa_120.jsonl",
+  "experiment_config": {
+    "provider": "openai",
+    "api": "responses",
+    "models": {
+      "debater": "gpt-4o-mini",
+      "judge": "gpt-4o-mini"
+    },
+    "temperatures": {
+      "debater": 0.7,
+      "judge": 0.2,
+      "baseline": 0.2
+    },
+    "protocol": {
+      "debate_min_rounds": 3,
+      "debate_max_rounds_requested": 6,
+      "debate_max_rounds_effective": 6,
+      "debate_convergence_rounds": 2,
+      "judge_panel_size": 1
+    },
+    "limits": {
+      "max_output_tokens": 600
+    },
+    "baselines": {
+      "default_self_consistency_samples": 9
+    },
+    "paths": {
+      "prompts_dir": "/Users/brian/Downloads/llm-debate/prompts",
+      "runs_dir": "/Users/brian/Downloads/llm-debate/runs"
+    },
+    "prompt_templates": {
+      "debater_a.txt": {
+        "sha256": "ebf5a51edd98d41881bb337b747350d9fc72e83860aeca475ed5a31872c7263e",
+        "placeholders": [
+          "CONTEXT",
+          "JSON_SCHEMA",
+          "OPPONENT_NAME",
+          "QUESTION",
+          "ROLE_NAME",
+          "ROUND_INDEX",
+          "TRANSCRIPT",
+          "TURN_KIND"
+        ]
+      },
+      "debater_b.txt": {
+        "sha256": "6d017b51db2aacee520ef8fd08fb768387ef59982272c2ff42bdc60b69dfc1b6",
+        "placeholders": [
+          "CONTEXT",
+          "JSON_SCHEMA",
+          "OPPONENT_NAME",
+          "QUESTION",
+          "ROLE_NAME",
+          "ROUND_INDEX",
+          "TRANSCRIPT",
+          "TURN_KIND"
+        ]
+      },
+      "judge.txt": {
+        "sha256": "5ccde927573969e8bfb0142bd6e9e96e700af53e985a0143fcda2a44d7e55067",
+        "placeholders": [
+          "CONTEXT",
+          "JSON_SCHEMA",
+          "JUDGE_INDEX",
+          "QUESTION",
+          "TRANSCRIPT"
+        ]
+      },
+      "jury_deliberation.txt": {
+        "sha256": "a2c3a5eb1a2c68888e88527048706154fa608ba1d2516702e6d5c877c8991f6e",
+        "placeholders": [
+          "CONTEXT",
+          "JSON_SCHEMA",
+          "MAJORITY_ANSWER",
+          "PANEL_VERDICTS",
+          "QUESTION",
+          "TRANSCRIPT"
+        ]
+      },
+      "direct_qa.txt": {
+        "sha256": "c88ea382608da5c73e3092755f24a574ff9aad849084082ab59a2fadbdb8ff02",
+        "placeholders": [
+          "CONTEXT",
+          "JSON_SCHEMA",
+          "QUESTION"
+        ]
+      },
+      "self_consistency.txt": {
+        "sha256": "4b4fb285ceac5c5ce3eb1d8ad9c7607745811cc42c91eef978d83bcfd0b70461",
+        "placeholders": [
+          "CONTEXT",
+          "JSON_SCHEMA",
+          "QUESTION",
+          "SAMPLE_INDEX"
+        ]
+      }
+    }
+  }
+}

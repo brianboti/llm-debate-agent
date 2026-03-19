@@ -1,0 +1,9 @@
+| Pattern | Count |
+|---|---:|
+| `debate_beats_both` | 2 |
+| `debate_loses_to_both` | 8 |
+| `debate_and_sc_beat_direct` | 2 |
+| `all_fail` | 23 |
+| `max_rounds_reached` | 18 |
+| `initial_consensus` | 97 |
+| `adaptive_convergence` | 5 |

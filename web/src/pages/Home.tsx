@@ -25,6 +25,25 @@ type JudgeVerdict = {
   debater_b_weakest: string;
   reasoning: string;
 };
+type JudgePanelSummary = {
+  panel_size: number;
+  panel_answers: string[];
+  vote_counts: Record<string, number>;
+  majority_answer: string;
+  majority_count: number;
+  minority_count: number;
+  unique_answers: number;
+  unanimous: boolean;
+  disagreement: boolean;
+  vote_margin: number;
+  confidence_mean: number;
+  confidence_min: number;
+  confidence_max: number;
+  deliberation_used: boolean;
+  final_answer: string;
+  final_agrees_with_majority: boolean;
+  deliberation_changed_majority: boolean;
+};
 type Baselines = {
   direct: ModelAnswer;
   self_consistency_samples: ModelAnswer[];
@@ -39,8 +58,10 @@ type ItemResult = {
   debate_rounds: DebateRound[];
   judge: JudgeVerdict;
   judge_panel?: JudgeVerdict[];
+  judge_panel_summary?: JudgePanelSummary;
   baselines: Baselines;
   correct_debate: boolean;
+  correct_judge_panel_majority?: boolean | null;
   correct_direct: boolean;
   correct_sc: boolean;
   meta: Record<string, unknown>;
@@ -128,9 +149,19 @@ function AnswerPanel({ title, answer, tone = "info" }: { title: string; answer: 
   );
 }
 
+function formatVoteCounts(voteCounts: Record<string, number>) {
+  const entries = Object.entries(voteCounts);
+  if (entries.length === 0) return "No votes";
+  return entries
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([answer, count]) => `${answer}: ${count}`)
+    .join(" | ");
+}
+
 export default function Home() {
   const [item, setItem] = useState<Item>(starter);
   const [roundsMax, setRoundsMax] = useState("6");
+  const [judgePanelSize, setJudgePanelSize] = useState("1");
   const [loading, setLoading] = useState(false);
   const [runId, setRunId] = useState<string | null>(null);
   const [result, setResult] = useState<ItemResult | null>(null);
@@ -141,6 +172,11 @@ export default function Home() {
     return Number.isFinite(value) && value >= 3 ? value : undefined;
   }, [roundsMax]);
 
+  const judgePanelSizeNumber = useMemo(() => {
+    const value = Number(judgePanelSize);
+    return Number.isFinite(value) && value >= 1 ? value : undefined;
+  }, [judgePanelSize]);
+
   async function onRun() {
     setLoading(true);
     setError(null);
@@ -148,7 +184,11 @@ export default function Home() {
     setRunId(null);
 
     try {
-      const payload = { item: { ...item, context: item.context ?? "" }, rounds_max: roundsMaxNumber };
+      const payload = {
+        item: { ...item, context: item.context ?? "" },
+        rounds_max: roundsMaxNumber,
+        judge_panel_size: judgePanelSizeNumber,
+      };
       const response = await apiPost<RunResponse>("/run", payload, { timeoutMs: 180_000 });
       setRunId(response.run_id);
       setResult(response.result);
@@ -162,6 +202,7 @@ export default function Home() {
   function reset() {
     setItem(starter);
     setRoundsMax("6");
+    setJudgePanelSize("1");
     setRunId(null);
     setResult(null);
     setError(null);
@@ -207,8 +248,14 @@ export default function Home() {
                   placeholder="Paste evidence or supporting context here..."
                 />
 
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid gap-3 lg:grid-cols-[1fr_1fr_auto]">
                   <Input label="Max rounds" value={roundsMax} onChange={setRoundsMax} placeholder="e.g. 6 (min 3)" />
+                  <Input
+                    label="Judge panel size"
+                    value={judgePanelSize}
+                    onChange={setJudgePanelSize}
+                    placeholder="1 for single judge, 3+ for jury"
+                  />
                   <div className="grid gap-2">
                     <span className="text-xs text-muted">Actions</span>
                     <div className="flex gap-2">
@@ -277,6 +324,46 @@ export default function Home() {
                         <Pill tone="neutral">Judge panel: {String(result.meta.judge_panel_size)}</Pill>
                       )}
                     </div>
+                    {result.judge_panel_summary && result.judge_panel_summary.panel_size > 1 && (
+                      <div className="grid gap-2 rounded-xl ring-1 ring-[color:var(--border)] bg-white/60 p-4">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <Pill tone={result.judge_panel_summary.unanimous ? "good" : "neutral"}>
+                            {result.judge_panel_summary.unanimous ? "Unanimous panel" : "Split panel"}
+                          </Pill>
+                          <Pill tone="neutral">Majority: {result.judge_panel_summary.majority_answer}</Pill>
+                          <Pill tone="neutral">Votes: {formatVoteCounts(result.judge_panel_summary.vote_counts)}</Pill>
+                          <Pill tone="neutral">Confidence mean: {result.judge_panel_summary.confidence_mean}</Pill>
+                          <Pill tone={result.judge_panel_summary.deliberation_changed_majority ? "bad" : "good"}>
+                            {result.judge_panel_summary.deliberation_changed_majority
+                              ? "Deliberation changed majority"
+                              : "Deliberation kept majority"}
+                          </Pill>
+                          {result.correct_judge_panel_majority != null && (
+                            <Pill tone={result.correct_judge_panel_majority ? "good" : "bad"}>
+                              Majority vote {result.correct_judge_panel_majority ? "correct" : "wrong"}
+                            </Pill>
+                          )}
+                        </div>
+                        <details>
+                          <summary className="cursor-pointer text-sm text-primary">Show individual judge votes</summary>
+                          <div className="mt-3 grid gap-3 lg:grid-cols-2">
+                            {(result.judge_panel ?? []).map((verdict, index) => (
+                              <div
+                                key={`judge-${index + 1}`}
+                                className="rounded-xl ring-1 ring-[color:var(--border)] bg-white/80 p-3"
+                              >
+                                <div className="flex flex-wrap items-center gap-2">
+                                  <Pill tone="neutral">Judge {index + 1}</Pill>
+                                  <Pill tone="info">{verdict.verdict_answer}</Pill>
+                                  <Pill tone="neutral">Confidence: {verdict.confidence_1_to_5}/5</Pill>
+                                </div>
+                                <p className="mt-2 text-sm text-primary whitespace-pre-wrap">{verdict.reasoning}</p>
+                              </div>
+                            ))}
+                          </div>
+                        </details>
+                      </div>
+                    )}
                     <p className="text-sm text-primary whitespace-pre-wrap">{result.judge.reasoning}</p>
                     <div className="grid gap-2 rounded-xl ring-1 ring-[color:var(--border)] bg-white/60 p-4">
                       <div className="text-xs text-muted">Judge analysis</div>

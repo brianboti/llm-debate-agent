@@ -1,0 +1,222 @@
+{
+  "item": {
+    "id": "strategyqa-0050",
+    "question": "Could Eddie Hall hypothetically deadlift the world's largest cheeseburger?",
+    "context": "",
+    "ground_truth": "no"
+  },
+  "consensus": true,
+  "initial_a": {
+    "answer": "no",
+    "rationale": "Eddie Hall is a world-class strongman known for his incredible lifting capabilities, but the world's largest cheeseburger would likely weigh several hundred pounds, far exceeding the maximum weight he has lifted in competition. Given that the current record for deadlifting is around 1,100 pounds, a hypothetical cheeseburger might not only be impractical to lift but also pose significant challenges due to its size and structure. Therefore, it is unlikely he could deadlift it safely or effectively.",
+    "citations": []
+  },
+  "initial_b": {
+    "answer": "no",
+    "rationale": "Although Eddie Hall is an exceptional strongman capable of lifting heavy weights, a cheeseburger, no matter how large, would not present an equivalent challenge to his deadlifting ability. The largest cheeseburger would likely weigh less than the weights he is accustomed to lifting, and thus it would not be a test of his strength in a meaningful way.",
+    "citations": []
+  },
+  "debate_rounds": [],
+  "judge": {
+    "verdict_answer": "no",
+    "confidence_1_to_5": 5,
+    "analysis": "Both debaters argue that Eddie Hall could not deadlift the world's largest cheeseburger, but they approach the reasoning differently. Debater A emphasizes the impracticality and potential dangers of lifting such an object, while Debater B focuses on the cheeseburger's weight being less than Hall's lifting capacity. Debater A's argument is more compelling due to its consideration of safety and structural challenges.",
+    "debater_a_strongest": "Eddie Hall's lifting capabilities may not be sufficient for the size and structure of the cheeseburger.",
+    "debater_a_weakest": "The argument lacks specific weight estimates for the cheeseburger.",
+    "debater_b_strongest": "The cheeseburger would likely weigh less than the weights Hall is used to lifting.",
+    "debater_b_weakest": "The argument does not address the unique challenges posed by the cheeseburger's size and structure.",
+    "reasoning": "Debater A presents a more nuanced view that considers safety and practicality, while Debater B's argument is less comprehensive. Therefore, the conclusion is that Eddie Hall could not deadlift the world's largest cheeseburger."
+  },
+  "judge_panel": [
+    {
+      "verdict_answer": "no",
+      "confidence_1_to_5": 5,
+      "analysis": "Both debaters argue that Eddie Hall could not deadlift the world's largest cheeseburger, but they approach the reasoning differently. Debater A emphasizes the impracticality and potential dangers of lifting such an object, while Debater B focuses on the cheeseburger's weight being less than Hall's lifting capacity. Debater A's argument is more compelling due to its consideration of safety and structural challenges.",
+      "debater_a_strongest": "Eddie Hall's lifting capabilities may not be sufficient for the size and structure of the cheeseburger.",
+      "debater_a_weakest": "The argument lacks specific weight estimates for the cheeseburger.",
+      "debater_b_strongest": "The cheeseburger would likely weigh less than the weights Hall is used to lifting.",
+      "debater_b_weakest": "The argument does not address the unique challenges posed by the cheeseburger's size and structure.",
+      "reasoning": "Debater A presents a more nuanced view that considers safety and practicality, while Debater B's argument is less comprehensive. Therefore, the conclusion is that Eddie Hall could not deadlift the world's largest cheeseburger."
+    }
+  ],
+  "judge_panel_summary": {
+    "panel_size": 1,
+    "panel_answers": [
+      "no"
+    ],
+    "vote_counts": {
+      "no": 1
+    },
+    "majority_answer": "no",
+    "majority_count": 1,
+    "minority_count": 0,
+    "unique_answers": 1,
+    "unanimous": true,
+    "disagreement": false,
+    "vote_margin": 1,
+    "confidence_mean": 5.0,
+    "confidence_min": 5,
+    "confidence_max": 5,
+    "deliberation_used": false,
+    "final_answer": "no",
+    "final_agrees_with_majority": true,
+    "deliberation_changed_majority": false
+  },
+  "baselines": {
+    "direct": {
+      "answer": "yes",
+      "rationale": "Eddie Hall is a professional strongman known for his incredible strength, including a deadlift of 500 kg (1,102 lbs). While the weight of the world's largest cheeseburger is not specified, it is reasonable to assume that it would be within a range that he could lift, given his capabilities.",
+      "citations": []
+    },
+    "self_consistency_samples": [
+      {
+        "answer": "no",
+        "rationale": "Eddie Hall is a world-class strongman known for his incredible lifting abilities, but the concept of deadlifting a cheeseburger is impractical and unrealistic, as it would not be a standardized weight and could not be properly lifted in a traditional sense.",
+        "citations": []
+      },
+      {
+        "answer": "no",
+        "rationale": "Eddie Hall is a professional strongman known for lifting extremely heavy weights, but even in hypothetical situations, a cheeseburger, no matter how large, would not typically be a viable object for deadlifting due to its inconsistency and structure. Strongman competitions focus on lifting solid, stable weights, not food items.",
+        "citations": []
+      },
+      {
+        "answer": "yes",
+        "rationale": "Eddie Hall is a professional strongman known for his incredible lifting capabilities, including a deadlift record of 500 kg. A cheeseburger, regardless of its size, would not exceed this weight, making it feasible for him to deadlift it.",
+        "citations": []
+      }
+    ],
+    "self_consistency_vote": "no"
+  },
+  "correct_debate": true,
+  "correct_judge_panel_majority": true,
+  "correct_direct": false,
+  "correct_sc": true,
+  "meta": {
+    "llm_call_budget": 3,
+    "rounds_executed": 0,
+    "stop_reason": "initial_consensus",
+    "judge_panel_size": 1,
+    "judge_panel_summary": {
+      "panel_size": 1,
+      "panel_answers": [
+        "no"
+      ],
+      "vote_counts": {
+        "no": 1
+      },
+      "majority_answer": "no",
+      "majority_count": 1,
+      "minority_count": 0,
+      "unique_answers": 1,
+      "unanimous": true,
+      "disagreement": false,
+      "vote_margin": 1,
+      "confidence_mean": 5.0,
+      "confidence_min": 5,
+      "confidence_max": 5,
+      "deliberation_used": false,
+      "final_answer": "no",
+      "final_agrees_with_majority": true,
+      "deliberation_changed_majority": false
+    },
+    "experiment_config": {
+      "provider": "openai",
+      "api": "responses",
+      "models": {
+        "debater": "gpt-4o-mini",
+        "judge": "gpt-4o-mini"
+      },
+      "temperatures": {
+        "debater": 0.7,
+        "judge": 0.2,
+        "baseline": 0.2
+      },
+      "protocol": {
+        "debate_min_rounds": 3,
+        "debate_max_rounds_requested": 6,
+        "debate_max_rounds_effective": 6,
+        "debate_convergence_rounds": 2,
+        "judge_panel_size": 1
+      },
+      "limits": {
+        "max_output_tokens": 600
+      },
+      "baselines": {
+        "default_self_consistency_samples": 9
+      },
+      "paths": {
+        "prompts_dir": "/Users/brian/Downloads/llm-debate/prompts",
+        "runs_dir": "/Users/brian/Downloads/llm-debate/runs"
+      },
+      "prompt_templates": {
+        "debater_a.txt": {
+          "sha256": "ebf5a51edd98d41881bb337b747350d9fc72e83860aeca475ed5a31872c7263e",
+          "placeholders": [
+            "CONTEXT",
+            "JSON_SCHEMA",
+            "OPPONENT_NAME",
+            "QUESTION",
+            "ROLE_NAME",
+            "ROUND_INDEX",
+            "TRANSCRIPT",
+            "TURN_KIND"
+          ]
+        },
+        "debater_b.txt": {
+          "sha256": "6d017b51db2aacee520ef8fd08fb768387ef59982272c2ff42bdc60b69dfc1b6",
+          "placeholders": [
+            "CONTEXT",
+            "JSON_SCHEMA",
+            "OPPONENT_NAME",
+            "QUESTION",
+            "ROLE_NAME",
+            "ROUND_INDEX",
+            "TRANSCRIPT",
+            "TURN_KIND"
+          ]
+        },
+        "judge.txt": {
+          "sha256": "5ccde927573969e8bfb0142bd6e9e96e700af53e985a0143fcda2a44d7e55067",
+          "placeholders": [
+            "CONTEXT",
+            "JSON_SCHEMA",
+            "JUDGE_INDEX",
+            "QUESTION",
+            "TRANSCRIPT"
+          ]
+        },
+        "jury_deliberation.txt": {
+          "sha256": "a2c3a5eb1a2c68888e88527048706154fa608ba1d2516702e6d5c877c8991f6e",
+          "placeholders": [
+            "CONTEXT",
+            "JSON_SCHEMA",
+            "MAJORITY_ANSWER",
+            "PANEL_VERDICTS",
+            "QUESTION",
+            "TRANSCRIPT"
+          ]
+        },
+        "direct_qa.txt": {
+          "sha256": "c88ea382608da5c73e3092755f24a574ff9aad849084082ab59a2fadbdb8ff02",
+          "placeholders": [
+            "CONTEXT",
+            "JSON_SCHEMA",
+            "QUESTION"
+          ]
+        },
+        "self_consistency.txt": {
+          "sha256": "4b4fb285ceac5c5ce3eb1d8ad9c7607745811cc42c91eef978d83bcfd0b70461",
+          "placeholders": [
+            "CONTEXT",
+            "JSON_SCHEMA",
+            "QUESTION",
+            "SAMPLE_INDEX"
+          ]
+        }
+      }
+    },
+    "dataset_path": "/Users/brian/Downloads/llm-debate/data/strategyqa_120.jsonl",
+    "case_study_label": "debate_and_sc_beat_direct",
+    "case_study_description": "Debate and self-consistency recover an answer that direct QA misses."
+  }
+}

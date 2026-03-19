@@ -1,0 +1,110 @@
+{
+  "item": {
+    "id": "strategyqa-0001",
+    "question": "Is Mixed martial arts totally original from Roman Colosseum games?",
+    "context": "",
+    "ground_truth": "no"
+  },
+  "consensus": true,
+  "initial_a": {
+    "answer": "no",
+    "rationale": "Mixed martial arts (MMA) is not totally original from Roman Colosseum games; it evolved from various combat sports and martial arts practices worldwide, incorporating techniques from different cultures, unlike the gladiatorial contests which were specific to ancient Rome.",
+    "citations": []
+  },
+  "initial_b": {
+    "answer": "no",
+    "rationale": "Mixed martial arts (MMA) is not entirely original from Roman Colosseum games, as it incorporates various fighting styles from multiple cultures and eras. While the Colosseum featured combat sports, modern MMA has evolved from diverse influences, including boxing, wrestling, and martial arts from around the world, making it a distinct and contemporary sport rather than a direct continuation of ancient practices.",
+    "citations": []
+  },
+  "debate_rounds": [],
+  "judge": {
+    "verdict_answer": "no",
+    "confidence_1_to_5": 5,
+    "analysis": "Both debaters effectively argued that MMA is not entirely original from Roman Colosseum games, emphasizing its evolution from various combat sports. However, Debater B provided a more comprehensive explanation of the diverse influences on MMA, making their argument slightly more persuasive.",
+    "debater_a_strongest": "MMA evolved from various combat sports and martial arts practices worldwide.",
+    "debater_a_weakest": "Lacked specific examples of the diverse influences on MMA.",
+    "debater_b_strongest": "MMA incorporates various fighting styles from multiple cultures and eras.",
+    "debater_b_weakest": "Could have elaborated more on the historical context of MMA's evolution.",
+    "reasoning": "The arguments clearly indicate that MMA is a modern sport influenced by many traditions, not just a continuation of ancient Roman games."
+  },
+  "judge_panel": [
+    {
+      "verdict_answer": "no",
+      "confidence_1_to_5": 5,
+      "analysis": "Both debaters effectively argued that MMA is not entirely original from Roman Colosseum games, emphasizing its evolution from various combat sports. However, Debater B provided a more comprehensive explanation of the diverse influences on MMA, making their argument slightly more persuasive.",
+      "debater_a_strongest": "MMA evolved from various combat sports and martial arts practices worldwide.",
+      "debater_a_weakest": "Lacked specific examples of the diverse influences on MMA.",
+      "debater_b_strongest": "MMA incorporates various fighting styles from multiple cultures and eras.",
+      "debater_b_weakest": "Could have elaborated more on the historical context of MMA's evolution.",
+      "reasoning": "The arguments clearly indicate that MMA is a modern sport influenced by many traditions, not just a continuation of ancient Roman games."
+    }
+  ],
+  "baselines": {
+    "direct": {
+      "answer": "no",
+      "rationale": "Mixed martial arts (MMA) has roots in various combat sports and martial arts from different cultures, not solely from Roman Colosseum games. While the Colosseum featured gladiatorial combat, MMA incorporates techniques from disciplines like boxing, wrestling, and Brazilian jiu-jitsu, making it a diverse and modern sport.",
+      "citations": []
+    },
+    "self_consistency_samples": [
+      {
+        "answer": "no",
+        "rationale": "Mixed martial arts (MMA) is not totally original from Roman Colosseum games; it draws influences from various combat sports and martial arts developed over centuries across different cultures.",
+        "citations": []
+      },
+      {
+        "answer": "no",
+        "rationale": "Mixed martial arts (MMA) has roots in various combat sports and martial arts from around the world, not solely from the Roman Colosseum games. While ancient gladiatorial combat has some similarities, MMA incorporates techniques and styles from many cultures, making it a diverse and evolved sport rather than a direct descendant of Roman games.",
+        "citations": []
+      },
+      {
+        "answer": "no",
+        "rationale": "Mixed martial arts (MMA) is not totally original from Roman Colosseum games; while both involve combat sports, MMA has evolved from various martial arts and combat sports over time, incorporating techniques from different cultures and disciplines, whereas Roman games were more focused on gladiatorial combat.",
+        "citations": []
+      }
+    ],
+    "self_consistency_vote": "no"
+  },
+  "correct_debate": true,
+  "correct_direct": true,
+  "correct_sc": true,
+  "meta": {
+    "llm_call_budget": 3,
+    "rounds_executed": 0,
+    "stop_reason": "initial_consensus",
+    "judge_panel_size": 1,
+    "dataset_path": "/Users/brian/Downloads/llm-debate/data/strategyqa_120.jsonl",
+    "experiment_config": {
+      "provider": "openai",
+      "api": "responses",
+      "models": {
+        "debater": "gpt-4o-mini",
+        "judge": "gpt-4o-mini"
+      },
+      "temperatures": {
+        "debater": 0.7,
+        "judge": 0.2,
+        "baseline": 0.2
+      },
+      "protocol": {
+        "debate_min_rounds": 3,
+        "debate_max_rounds_requested": 6,
+        "debate_max_rounds_effective": 6,
+        "debate_convergence_rounds": 2,
+        "judge_panel_size": 1
+      },
+      "limits": {
+        "max_output_tokens": 600
+      },
+      "baselines": {
+        "default_self_consistency_samples": 9
+      },
+      "paths": {
+        "prompts_dir": "/Users/brian/Downloads/llm-debate/prompts",
+        "runs_dir": "/Users/brian/Downloads/llm-debate/runs"
+      },
+      "prompt_templates": {}
+    },
+    "case_study_label": "all_correct_initial_consensus",
+    "case_study_description": "All methods are correct and the debate resolves immediately by consensus."
+  }
+}

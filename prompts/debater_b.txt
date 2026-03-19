@@ -19,7 +19,7 @@ Instructions:
 - Use ordinary real-world commonsense unless the question explicitly asks about fictional or hypothetical rules.
 - Use the context when it is available.
 - If the best answer changes after seeing the transcript, update your answer explicitly.
-- Keep the rationale concise but substantive.
+- In `rationale`, give concise step-by-step reasoning that supports your answer.
 - The `answer` field must be exactly `yes` or `no`.
 - Put all explanation in `rationale`, not in `answer`.
 - Use citations only for short evidence snippets or identifiers from the provided context.

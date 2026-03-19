@@ -20,13 +20,17 @@ web/node_modules/
 npm-debug.log*
 
 # Local outputs
-runs/
+runs/*
+!runs/README.md
+!runs/*.jsonl
+!runs/*.summary.json
 final_run_console.txt
 
 # Build / caches
 dist/
 build/
 coverage/
+*.tsbuildinfo
 
 # Editors
 .vscode/

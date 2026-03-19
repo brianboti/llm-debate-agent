@@ -44,12 +44,14 @@ class Item(BaseModel):
 class RunRequest(BaseModel):
     item: Item
     rounds_max: Optional[int] = Field(default=None, ge=3)
+    judge_panel_size: Optional[int] = Field(default=None, ge=1)
 
 
 class BatchRequest(BaseModel):
     dataset_jsonl_path: str
     limit: Optional[int] = Field(default=None, ge=1)
     seed: int = 7
+    judge_panel_size: Optional[int] = Field(default=None, ge=1)
 
 
 class ModelAnswer(BaseModel):
@@ -68,6 +70,26 @@ class JudgeVerdict(BaseModel):
     debater_b_strongest: str = ""
     debater_b_weakest: str = ""
     reasoning: str = ""
+
+
+class JudgePanelSummary(BaseModel):
+    panel_size: int = 1
+    panel_answers: List[str] = Field(default_factory=list)
+    vote_counts: Dict[str, int] = Field(default_factory=dict)
+    majority_answer: str = ""
+    majority_count: int = 0
+    minority_count: int = 0
+    unique_answers: int = 0
+    unanimous: bool = True
+    disagreement: bool = False
+    vote_margin: int = 0
+    confidence_mean: float = 0.0
+    confidence_min: int = 0
+    confidence_max: int = 0
+    deliberation_used: bool = False
+    final_answer: str = ""
+    final_agrees_with_majority: bool = True
+    deliberation_changed_majority: bool = False
 
 
 class DebateRound(BaseModel):
@@ -90,8 +112,10 @@ class ItemResult(BaseModel):
     debate_rounds: List[DebateRound]
     judge: JudgeVerdict
     judge_panel: List[JudgeVerdict] = Field(default_factory=list)
+    judge_panel_summary: JudgePanelSummary = Field(default_factory=JudgePanelSummary)
     baselines: Baselines
     correct_debate: bool
+    correct_judge_panel_majority: Optional[bool] = None
     correct_direct: bool
     correct_sc: bool
     meta: Dict[str, Any] = Field(default_factory=dict)
@@ -105,6 +129,8 @@ class BatchSummary(BaseModel):
     accuracy_sc: float
     mcnemar_debate_vs_direct_p: Optional[float] = None
     mcnemar_debate_vs_sc_p: Optional[float] = None
+    dataset_path: Optional[str] = None
+    experiment_config: Dict[str, Any] = Field(default_factory=dict)
 
 
 class RunResponse(BaseModel):
