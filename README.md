@@ -201,13 +201,3 @@ Recommended frontend check in a networked environment:
 ```bash
 cd web && npm ci && npm run build
 ```
-
-## Important submission note
-The assignment requires a real 100+ question experiment and a student-authored blog post. Before submitting, make sure your public repository includes:
-- the final `runs/<run_id>.jsonl` and `runs/<run_id>.summary.json` logs
-- the corresponding `artifacts/<run_id>/` outputs
-- your final `REPORT.md`
-- your AI-tool disclosure in the methodology section
-
-## Security
-Do not commit real secrets. Keep API keys only in local `.env` files that are ignored by Git.
